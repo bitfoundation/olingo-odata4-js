@@ -39,11 +39,11 @@
             method: "GET",
             body: "test request"
         };
-        var expected = "GET http://temp.org HTTP/1.1\r\n" +
-                       "Content-Type: plain/text; charset=utf-8\r\n" +
-                       "Accept: */*\r\n" +
-                       "OData-Version: 2.0\r\n" +
-                       "\r\n" +
+        var expected = "GET http://temp.org HTTP/1.1\n" +
+                       "Content-Type: plain/text; charset=utf-8\n" +
+                       "Accept: */*\n" +
+                       "OData-Version: 2.0\n" +
+                       "\n" +
                        "test request";
 
         var actual = window.odatajs.oData.batch.writeRequest(request);
@@ -63,23 +63,23 @@
             }
         };
 
-        var template = "\r\n--<batchBoundary>\r\n" +
-                       "Content-Type: application/http\r\n" +
-                       "Content-Transfer-Encoding: binary\r\n" +
-                       "\r\n" +
-                       "GET http://feed(1) HTTP/1.1\r\n" +
-                       "Accept: " + defaultAcceptString + "\r\n" +
-                       "OData-MaxVersion: 4.0\r\n" +
-                       "\r\n" +
-                       "\r\n--<batchBoundary>\r\n" +
-                       "Content-Type: application/http\r\n" +
-                       "Content-Transfer-Encoding: binary\r\n" +
-                       "\r\n" +
-                       "GET http://feed(2) HTTP/1.1\r\n" +
-                       "Accept: application/json;odata.metadata=minimal\r\n" +
-                       "OData-MaxVersion: 4.0\r\n" +
-                       "\r\n" +
-                       "\r\n--<batchBoundary>--\r\n";
+        var template = "\n--<batchBoundary>\n" +
+                       "Content-Type: application/http\n" +
+                       "Content-Transfer-Encoding: binary\n" +
+                       "\n" +
+                       "GET http://feed(1) HTTP/1.1\n" +
+                       "Accept: " + defaultAcceptString + "\n" +
+                       "OData-MaxVersion: 4.0\n" +
+                       "\n" +
+                       "\n--<batchBoundary>\n" +
+                       "Content-Type: application/http\n" +
+                       "Content-Transfer-Encoding: binary\n" +
+                       "\n" +
+                       "GET http://feed(2) HTTP/1.1\n" +
+                       "Accept: application/json;odata.metadata=minimal\n" +
+                       "OData-MaxVersion: 4.0\n" +
+                       "\n" +
+                       "\n--<batchBoundary>--\n";
 
         MockHttpClient.clear().addRequestVerifier(request.requestUri, function (request) {
             var cType = window.odatajs.oData.handler.contentType(request.headers["Content-Type"]);
@@ -112,50 +112,50 @@
         };
 
         // 
-        var template = "\r\n--<batchBoundary>\r\n" +
-                       "Content-Type: application/http\r\n" +
-                       "Content-Transfer-Encoding: binary\r\n" +
-                       "\r\n" +
-                       "GET http://feed(1) HTTP/1.1\r\n" +
-                       "Accept: " + defaultAcceptString + "\r\n" +
-                       "OData-MaxVersion: 4.0\r\n" +
-                       "\r\n" +
-                       "\r\n--<batchBoundary>\r\n" +
-                       "Content-Type: application/http\r\n" +
-                       "Content-Transfer-Encoding: binary\r\n" +
-                       "\r\n" +
-                       "GET http://feed(2) HTTP/1.1\r\n" +
-                       "Accept: application/json;odata.metadata=minimal\r\n" +
-                       "OData-MaxVersion: 4.0\r\n" +
-                       "\r\n" +
-                       "\r\n--<batchBoundary>\r\n" +
-                       "Content-Type: multipart/mixed; boundary=<changesetBoundary>\r\n" +
-                       "\r\n--<changesetBoundary>\r\n" +
-                       "Content-Type: application/http\r\n" +
-                       "Content-Transfer-Encoding: binary\r\n" +
-                       "\r\n" +
-                       "POST http://feed(1) HTTP/1.1\r\n" +
-                       "Accept: " + defaultAcceptString + "\r\n" +
-                       "OData-Version: 4.0\r\n" +
-                       "Content-Type: application/json\r\n" +
-                       "OData-MaxVersion: 4.0\r\n" +
-                       "\r\n" +
+        var template = "\n--<batchBoundary>\n" +
+                       "Content-Type: application/http\n" +
+                       "Content-Transfer-Encoding: binary\n" +
+                       "\n" +
+                       "GET http://feed(1) HTTP/1.1\n" +
+                       "Accept: " + defaultAcceptString + "\n" +
+                       "OData-MaxVersion: 4.0\n" +
+                       "\n" +
+                       "\n--<batchBoundary>\n" +
+                       "Content-Type: application/http\n" +
+                       "Content-Transfer-Encoding: binary\n" +
+                       "\n" +
+                       "GET http://feed(2) HTTP/1.1\n" +
+                       "Accept: application/json;odata.metadata=minimal\n" +
+                       "OData-MaxVersion: 4.0\n" +
+                       "\n" +
+                       "\n--<batchBoundary>\n" +
+                       "Content-Type: multipart/mixed; boundary=<changesetBoundary>\n" +
+                       "\n--<changesetBoundary>\n" +
+                       "Content-Type: application/http\n" +
+                       "Content-Transfer-Encoding: binary\n" +
+                       "\n" +
+                       "POST http://feed(1) HTTP/1.1\n" +
+                       "Accept: " + defaultAcceptString + "\n" +
+                       "OData-Version: 4.0\n" +
+                       "Content-Type: application/json\n" +
+                       "OData-MaxVersion: 4.0\n" +
+                       "\n" +
                        jsonPayload +
-                       "\r\n--<changesetBoundary>--\r\n" +
-                       "\r\n--<batchBoundary>\r\n" +
-                       "Content-Type: application/http\r\n" +
-                       "Content-Transfer-Encoding: binary\r\n" +
-                       "\r\n" +
-                       "GET http://feed(1) HTTP/1.1\r\n" +
-                       "Accept: " + defaultAcceptString + "\r\n" +
-                       "OData-MaxVersion: 4.0\r\n" +
-                       "\r\n" +
-                       "\r\n--<batchBoundary>--\r\n";
+                       "\n--<changesetBoundary>--\n" +
+                       "\n--<batchBoundary>\n" +
+                       "Content-Type: application/http\n" +
+                       "Content-Transfer-Encoding: binary\n" +
+                       "\n" +
+                       "GET http://feed(1) HTTP/1.1\n" +
+                       "Accept: " + defaultAcceptString + "\n" +
+                       "OData-MaxVersion: 4.0\n" +
+                       "\n" +
+                       "\n--<batchBoundary>--\n";
 
         MockHttpClient.clear().addRequestVerifier(request.requestUri, function (request) {
             // Get the boundaries from the request.
             var start = request.body.indexOf("multipart/mixed");
-            var end = request.body.indexOf("\r\n", start);
+            var end = request.body.indexOf("\n", start);
 
             var csetBoundary = window.odatajs.oData.handler.contentType(request.body.substring(start, end)).properties["boundary"];
             var batchBoundary = window.odatajs.oData.handler.contentType(request.headers["Content-Type"]).properties["boundary"];
@@ -186,26 +186,26 @@
             }
         };
 
-        var template = "\r\n--<batchBoundary>\r\n" +
-                       "Content-Type: multipart/mixed; boundary=<changesetBoundary>\r\n" +
-                       "\r\n--<changesetBoundary>\r\n" +
-                       "Content-Type: application/http\r\n" +
-                       "Content-Transfer-Encoding: binary\r\n" +
-                       "\r\n" +
-                       "POST http://feed(1) HTTP/1.1\r\n" +
-                       "Accept: " + defaultAcceptString + "\r\n" +
-                       "OData-Version: 4.0\r\n" +
-                       "Content-Type: application/json\r\n" +
-                       "OData-MaxVersion: 4.0\r\n" +
-                       "\r\n" +
+        var template = "\n--<batchBoundary>\n" +
+                       "Content-Type: multipart/mixed; boundary=<changesetBoundary>\n" +
+                       "\n--<changesetBoundary>\n" +
+                       "Content-Type: application/http\n" +
+                       "Content-Transfer-Encoding: binary\n" +
+                       "\n" +
+                       "POST http://feed(1) HTTP/1.1\n" +
+                       "Accept: " + defaultAcceptString + "\n" +
+                       "OData-Version: 4.0\n" +
+                       "Content-Type: application/json\n" +
+                       "OData-MaxVersion: 4.0\n" +
+                       "\n" +
                        jsonPayload +
-                       "\r\n--<changesetBoundary>--\r\n" +
-                       "\r\n--<batchBoundary>--\r\n";
+                       "\n--<changesetBoundary>--\n" +
+                       "\n--<batchBoundary>--\n";
 
         MockHttpClient.clear().addRequestVerifier(request.requestUri, function (request) {
             // Get the boundaries from the request.
             var start = request.body.indexOf("multipart/mixed");
-            var end = request.body.indexOf("\r\n", start);
+            var end = request.body.indexOf("\n", start);
 
             var csetBoundary = window.odatajs.oData.handler.contentType(request.body.substring(start, end)).properties["boundary"];
             var batchBoundary = window.odatajs.oData.handler.contentType(request.headers["Content-Type"]).properties["boundary"];
@@ -267,31 +267,31 @@
             headers: {
                 "Content-Type": "multipart/mixed; boundary=batchresponse_b61ab173-39c7-45ea-ade4-941efae85ab9"
             },
-            body: "--batchresponse_b61ab173-39c7-45ea-ade4-941efae85ab9\r\n\
-Content-Type: application/http\r\n\
-Content-Transfer-Encoding: binary\r\n\
-\r\n\
-HTTP/1.1 201 Created\r\n\
-OData-Version: 4.0;\r\n\
-Content-Type: application/json;odata.metadata=minimal;odata.streaming=true;IEEE754Compatible=false;charset=utf-8\r\n\
-X-Content-Type-Options: nosniff\r\n\
-Cache-Control: no-cache\r\n\
-Location: http://localhost:4002/tests/endpoints/FoodStoreDataServiceV4.svc/Categories(42)\r\n\
-\r\n\
-{\"@odata.context\":\"http://localhost:4002/tests/endpoints/FoodStoreDataServiceV4.svc/$metadata#Categories/$entity\",\"Icon@odata.mediaContentType\":\"image/gif\",\"CategoryID\":42,\"Name\":\"New Category\"}\r\n\
---batchresponse_b61ab173-39c7-45ea-ade4-941efae85ab9\r\n\
-Content-Type: application/http\r\n\
-Content-Transfer-Encoding: binary\r\n\
-\r\n\
-HTTP/1.1 201 Created\r\n\
-OData-Version: 4.0;\r\n\
-Content-Type: application/json;odata.metadata=minimal;odata.streaming=true;IEEE754Compatible=false;charset=utf-8\r\n\
-X-Content-Type-Options: nosniff\r\n\
-Cache-Control: no-cache\r\n\
-Location: http://localhost:4002/tests/endpoints/FoodStoreDataServiceV4.svc/Categories(43)\r\n\
-\r\n\
-{\"@odata.context\":\"http://localhost:4002/tests/endpoints/FoodStoreDataServiceV4.svc/$metadata#Categories/$entity\",\"Icon@odata.mediaContentType\":\"image/gif\",\"CategoryID\":43,\"Name\":\"New Category\"}\r\n\
---batchresponse_b61ab173-39c7-45ea-ade4-941efae85ab9--\r\n\
+            body: "--batchresponse_b61ab173-39c7-45ea-ade4-941efae85ab9\n\
+Content-Type: application/http\n\
+Content-Transfer-Encoding: binary\n\
+\n\
+HTTP/1.1 201 Created\n\
+OData-Version: 4.0;\n\
+Content-Type: application/json;odata.metadata=minimal;odata.streaming=true;IEEE754Compatible=false;charset=utf-8\n\
+X-Content-Type-Options: nosniff\n\
+Cache-Control: no-cache\n\
+Location: http://localhost:4002/tests/endpoints/FoodStoreDataServiceV4.svc/Categories(42)\n\
+\n\
+{\"@odata.context\":\"http://localhost:4002/tests/endpoints/FoodStoreDataServiceV4.svc/$metadata#Categories/$entity\",\"Icon@odata.mediaContentType\":\"image/gif\",\"CategoryID\":42,\"Name\":\"New Category\"}\n\
+--batchresponse_b61ab173-39c7-45ea-ade4-941efae85ab9\n\
+Content-Type: application/http\n\
+Content-Transfer-Encoding: binary\n\
+\n\
+HTTP/1.1 201 Created\n\
+OData-Version: 4.0;\n\
+Content-Type: application/json;odata.metadata=minimal;odata.streaming=true;IEEE754Compatible=false;charset=utf-8\n\
+X-Content-Type-Options: nosniff\n\
+Cache-Control: no-cache\n\
+Location: http://localhost:4002/tests/endpoints/FoodStoreDataServiceV4.svc/Categories(43)\n\
+\n\
+{\"@odata.context\":\"http://localhost:4002/tests/endpoints/FoodStoreDataServiceV4.svc/$metadata#Categories/$entity\",\"Icon@odata.mediaContentType\":\"image/gif\",\"CategoryID\":43,\"Name\":\"New Category\"}\n\
+--batchresponse_b61ab173-39c7-45ea-ade4-941efae85ab9--\n\
 "
         };
 
@@ -313,71 +313,71 @@ Location: http://localhost:4002/tests/endpoints/FoodStoreDataServiceV4.svc/Categ
             headers: {
                 "Content-Type": "multipart/mixed; boundary=batchresponse_fb681875-73dc-4e62-9898-a0af89021341"
             },
-            body: "--batchresponse_fb681875-73dc-4e62-9898-a0af89021341\r\n\
-Content-Type: multipart/mixed; boundary=changesetresponse_905a1494-fd76-4846-93f9-a3431f0bf5a2\r\n\
-\r\n\
---changesetresponse_905a1494-fd76-4846-93f9-a3431f0bf5a2\r\n\
-Content-Type: application/http\r\n\
-Content-Transfer-Encoding: binary\r\n\
-\r\n\
-HTTP/1.1 201 OK\r\n\
-OData-Version: 4.0;\r\n\
-Content-Type: application/json;odata.metadata=minimal;odata.streaming=true;IEEE754Compatible=false;charset=utf-8\r\n\
-X-Content-Type-Options: nosniff\r\n\
-Cache-Control: no-cache\r\n\
-Location: http://localhost:4002/tests/endpoints/FoodStoreDataServiceV4.svc/Categories(42)\r\n\
-\r\n\
-{\"@odata.context\":\"http://localhost:4002/tests/endpoints/FoodStoreDataServiceV4.svc/$metadata#Categories/$entity\",\"Icon@odata.mediaContentType\":\"image/gif\",\"CategoryID\":42,\"Name\":\"New Category\"}\r\n\
---changesetresponse_905a1494-fd76-4846-93f9-a3431f0bf5a2\r\n\
-Content-Type: application/http\r\n\
-Content-Transfer-Encoding: binary\r\n\
-\r\n\
-HTTP/1.1 204 No Content\r\n\
-X-Content-Type-Options: nosniff\r\n\
-Cache-Control: no-cache\r\n\
-OData-Version: 4.0;\r\n\
-\r\n\
-\r\n\
---changesetresponse_905a1494-fd76-4846-93f9-a3431f0bf5a2--\r\n\
---batchresponse_fb681875-73dc-4e62-9898-a0af89021341\r\n\
-Content-Type: application/http\r\n\
-Content-Transfer-Encoding: binary\r\n\
-\r\n\
-HTTP/1.1 201 Created\r\n\
-OData-Version: 4.0;\r\n\
-Content-Type: application/json;odata.metadata=minimal;odata.streaming=true;IEEE754Compatible=false;charset=utf-8\r\n\
-X-Content-Type-Options: nosniff\r\n\
-Cache-Control: no-cache\r\n\
-Location: http://localhost:4002/tests/endpoints/FoodStoreDataServiceV4.svc/Categories(41)\r\n\
-\r\n\
-{\"@odata.context\":\"http://localhost:4002/tests/endpoints/FoodStoreDataServiceV4.svc/$metadata#Categories/$entity\",\"Icon@odata.mediaContentType\":\"image/gif\",\"CategoryID\":41,\"Name\":\"New Category\"}\r\n\
---batchresponse_fb681875-73dc-4e62-9898-a0af89021341\r\n\
-Content-Type: multipart/mixed; boundary=changesetresponse_92cc2ae8-a5f2-47fc-aaa3-1ff9e7453b07\r\n\
-\r\n\
---changesetresponse_92cc2ae8-a5f2-47fc-aaa3-1ff9e7453b07\r\n\
-Content-Type: application/http\r\n\
-Content-Transfer-Encoding: binary\r\n\
-\r\n\
-HTTP/1.1 201 OK\r\n\
-OData-Version: 4.0;\r\n\
-Content-Type: application/json;odata.metadata=minimal;odata.streaming=true;IEEE754Compatible=false;charset=utf-8\r\n\
-X-Content-Type-Options: nosniff\r\n\
-Cache-Control: no-cache\r\n\
-Location: http://localhost:4002/tests/endpoints/FoodStoreDataServiceV4.svc/Categories(43)\r\n\
-\r\n\
-{\"@odata.context\":\"http://localhost:4002/tests/endpoints/FoodStoreDataServiceV4.svc/$metadata#Categories/$entity\",\"Icon@odata.mediaContentType\":\"image/gif\",\"CategoryID\":43,\"Name\":\"New Category\"}\r\n\
---changesetresponse_92cc2ae8-a5f2-47fc-aaa3-1ff9e7453b07\r\n\
-Content-Type: application/http\r\n\
-Content-Transfer-Encoding: binary\r\n\
-\r\n\
-HTTP/1.1 204 No Content\r\n\
-X-Content-Type-Options: nosniff\r\n\
-Cache-Control: no-cache\r\n\
-OData-Version: 4.0;\r\n\
-\r\n\
-\r\n\
---changesetresponse_92cc2ae8-a5f2-47fc-aaa3-1ff9e7453b07--\r\n\
---batchresponse_fb681875-73dc-4e62-9898-a0af89021341--\r\n\
+            body: "--batchresponse_fb681875-73dc-4e62-9898-a0af89021341\n\
+Content-Type: multipart/mixed; boundary=changesetresponse_905a1494-fd76-4846-93f9-a3431f0bf5a2\n\
+\n\
+--changesetresponse_905a1494-fd76-4846-93f9-a3431f0bf5a2\n\
+Content-Type: application/http\n\
+Content-Transfer-Encoding: binary\n\
+\n\
+HTTP/1.1 201 OK\n\
+OData-Version: 4.0;\n\
+Content-Type: application/json;odata.metadata=minimal;odata.streaming=true;IEEE754Compatible=false;charset=utf-8\n\
+X-Content-Type-Options: nosniff\n\
+Cache-Control: no-cache\n\
+Location: http://localhost:4002/tests/endpoints/FoodStoreDataServiceV4.svc/Categories(42)\n\
+\n\
+{\"@odata.context\":\"http://localhost:4002/tests/endpoints/FoodStoreDataServiceV4.svc/$metadata#Categories/$entity\",\"Icon@odata.mediaContentType\":\"image/gif\",\"CategoryID\":42,\"Name\":\"New Category\"}\n\
+--changesetresponse_905a1494-fd76-4846-93f9-a3431f0bf5a2\n\
+Content-Type: application/http\n\
+Content-Transfer-Encoding: binary\n\
+\n\
+HTTP/1.1 204 No Content\n\
+X-Content-Type-Options: nosniff\n\
+Cache-Control: no-cache\n\
+OData-Version: 4.0;\n\
+\n\
+\n\
+--changesetresponse_905a1494-fd76-4846-93f9-a3431f0bf5a2--\n\
+--batchresponse_fb681875-73dc-4e62-9898-a0af89021341\n\
+Content-Type: application/http\n\
+Content-Transfer-Encoding: binary\n\
+\n\
+HTTP/1.1 201 Created\n\
+OData-Version: 4.0;\n\
+Content-Type: application/json;odata.metadata=minimal;odata.streaming=true;IEEE754Compatible=false;charset=utf-8\n\
+X-Content-Type-Options: nosniff\n\
+Cache-Control: no-cache\n\
+Location: http://localhost:4002/tests/endpoints/FoodStoreDataServiceV4.svc/Categories(41)\n\
+\n\
+{\"@odata.context\":\"http://localhost:4002/tests/endpoints/FoodStoreDataServiceV4.svc/$metadata#Categories/$entity\",\"Icon@odata.mediaContentType\":\"image/gif\",\"CategoryID\":41,\"Name\":\"New Category\"}\n\
+--batchresponse_fb681875-73dc-4e62-9898-a0af89021341\n\
+Content-Type: multipart/mixed; boundary=changesetresponse_92cc2ae8-a5f2-47fc-aaa3-1ff9e7453b07\n\
+\n\
+--changesetresponse_92cc2ae8-a5f2-47fc-aaa3-1ff9e7453b07\n\
+Content-Type: application/http\n\
+Content-Transfer-Encoding: binary\n\
+\n\
+HTTP/1.1 201 OK\n\
+OData-Version: 4.0;\n\
+Content-Type: application/json;odata.metadata=minimal;odata.streaming=true;IEEE754Compatible=false;charset=utf-8\n\
+X-Content-Type-Options: nosniff\n\
+Cache-Control: no-cache\n\
+Location: http://localhost:4002/tests/endpoints/FoodStoreDataServiceV4.svc/Categories(43)\n\
+\n\
+{\"@odata.context\":\"http://localhost:4002/tests/endpoints/FoodStoreDataServiceV4.svc/$metadata#Categories/$entity\",\"Icon@odata.mediaContentType\":\"image/gif\",\"CategoryID\":43,\"Name\":\"New Category\"}\n\
+--changesetresponse_92cc2ae8-a5f2-47fc-aaa3-1ff9e7453b07\n\
+Content-Type: application/http\n\
+Content-Transfer-Encoding: binary\n\
+\n\
+HTTP/1.1 204 No Content\n\
+X-Content-Type-Options: nosniff\n\
+Cache-Control: no-cache\n\
+OData-Version: 4.0;\n\
+\n\
+\n\
+--changesetresponse_92cc2ae8-a5f2-47fc-aaa3-1ff9e7453b07--\n\
+--batchresponse_fb681875-73dc-4e62-9898-a0af89021341--\n\
 "
         };
 
@@ -415,26 +415,26 @@ OData-Version: 4.0;\r\n\
             headers: {
                 "Content-Type": "multipart/mixed; boundary=batchresponse_9402a3ab-260f-4fa4-af01-0b30db397c8d"
             },
-            body: "--batchresponse_9402a3ab-260f-4fa4-af01-0b30db397c8d\r\n\
-Content-Type: application/http\r\n\
-Content-Transfer-Encoding: binary\r\n\
-\r\n\
-HTTP/1.1 200 OK\r\n\
-Cache-Control: no-cache\r\n\
-OData-Version: 4.0;\r\n\
-Content-Type: application/json;charset=utf-8\r\n\
-Location: http://localhost:4002/tests/endpoints/FoodStoreDataServiceV4.svc/Categories(1)\r\n\
-\r\n\
-{\"error\":{\"code\":\"\",\"message\":\"Resource not found for the segment 'Categories(1)'.\"}}\r\n\
---batchresponse_9402a3ab-260f-4fa4-af01-0b30db397c8d\r\n\
-Content-Type: application/http\r\n\
-Content-Transfer-Encoding: binary\r\n\
-\r\n\
-HTTP/1.1 400 Bad Request\r\n\
-OData-Version: 4.0;\r\n\
-Content-Type: application/json\r\n\
-{\"error\":{\"code\":\"\",\"message\":\"Error processing request stream.'.\"}}\r\n\
---batchresponse_9402a3ab-260f-4fa4-af01-0b30db397c8d--\r\n\
+            body: "--batchresponse_9402a3ab-260f-4fa4-af01-0b30db397c8d\n\
+Content-Type: application/http\n\
+Content-Transfer-Encoding: binary\n\
+\n\
+HTTP/1.1 200 OK\n\
+Cache-Control: no-cache\n\
+OData-Version: 4.0;\n\
+Content-Type: application/json;charset=utf-8\n\
+Location: http://localhost:4002/tests/endpoints/FoodStoreDataServiceV4.svc/Categories(1)\n\
+\n\
+{\"error\":{\"code\":\"\",\"message\":\"Resource not found for the segment 'Categories(1)'.\"}}\n\
+--batchresponse_9402a3ab-260f-4fa4-af01-0b30db397c8d\n\
+Content-Type: application/http\n\
+Content-Transfer-Encoding: binary\n\
+\n\
+HTTP/1.1 400 Bad Request\n\
+OData-Version: 4.0;\n\
+Content-Type: application/json\n\
+{\"error\":{\"code\":\"\",\"message\":\"Error processing request stream.'.\"}}\n\
+--batchresponse_9402a3ab-260f-4fa4-af01-0b30db397c8d--\n\
 "
         };
 
@@ -457,32 +457,32 @@ Content-Type: application/json\r\n\
             headers: {
                 "Content-Type": "multipart/mixed; boundary=batchresponse_fb681875-73dc-4e62-9898-a0af89021341"
             },
-            body: "--batchresponse_fb681875-73dc-4e62-9898-a0af89021341\r\n\
-Content-Type: application/http\r\n\
-Content-Transfer-Encoding: binary\r\n\
-\r\n\
-HTTP/1.1 200 OK\r\n\
-Cache-Control: no-cache\r\n\
-OData-Version: 4.0;\r\n\
-Content-Type: application/json;charset=utf-8\r\n\
-Location: http://localhost:4002/tests/endpoints/FoodStoreDataServiceV4.svc/Categories(1)\r\n\
-\r\n\
-{\"error\":{\"code\":\"\",\"message\":\"Resource not found for the segment 'Categories(1)'.\"}}\r\n\
---batchresponse_fb681875-73dc-4e62-9898-a0af89021341\r\n\
-Content-Type: multipart/mixed; boundary=changesetresponse_2f9c6ba7-b330-4e7c-bf2a-db521996c243\r\n\
-\r\n\
---changesetresponse_2f9c6ba7-b330-4e7c-bf2a-db521996c243\r\n\
-Content-Type: application/http\r\n\
-Content-Transfer-Encoding: binary\r\n\
-\r\n\
-HTTP/1.1 404 Not Found\r\n\
-X-Content-Type-Options: nosniff\r\n\
-OData-Version: 4.0;\r\n\
-Content-Type: application/json;odata.metadata=minimal;odata.streaming=true;IEEE754Compatible=false;charset=utf-8\r\n\
-\r\n\
-{\"error\":{\"code\":\"\",\"message\":\GET operation cannot be specified in a change set. Only PUT, POST and DELETE operations can be specified in a change set..'.\"}}\r\n\
---changesetresponse_2f9c6ba7-b330-4e7c-bf2a-db521996c243--\r\n\
---batchresponse_fb681875-73dc-4e62-9898-a0af89021341--\r\n\
+            body: "--batchresponse_fb681875-73dc-4e62-9898-a0af89021341\n\
+Content-Type: application/http\n\
+Content-Transfer-Encoding: binary\n\
+\n\
+HTTP/1.1 200 OK\n\
+Cache-Control: no-cache\n\
+OData-Version: 4.0;\n\
+Content-Type: application/json;charset=utf-8\n\
+Location: http://localhost:4002/tests/endpoints/FoodStoreDataServiceV4.svc/Categories(1)\n\
+\n\
+{\"error\":{\"code\":\"\",\"message\":\"Resource not found for the segment 'Categories(1)'.\"}}\n\
+--batchresponse_fb681875-73dc-4e62-9898-a0af89021341\n\
+Content-Type: multipart/mixed; boundary=changesetresponse_2f9c6ba7-b330-4e7c-bf2a-db521996c243\n\
+\n\
+--changesetresponse_2f9c6ba7-b330-4e7c-bf2a-db521996c243\n\
+Content-Type: application/http\n\
+Content-Transfer-Encoding: binary\n\
+\n\
+HTTP/1.1 404 Not Found\n\
+X-Content-Type-Options: nosniff\n\
+OData-Version: 4.0;\n\
+Content-Type: application/json;odata.metadata=minimal;odata.streaming=true;IEEE754Compatible=false;charset=utf-8\n\
+\n\
+{\"error\":{\"code\":\"\",\"message\":\GET operation cannot be specified in a change set. Only PUT, POST and DELETE operations can be specified in a change set..'.\"}}\n\
+--changesetresponse_2f9c6ba7-b330-4e7c-bf2a-db521996c243--\n\
+--batchresponse_fb681875-73dc-4e62-9898-a0af89021341--\n\
 "
         };
 
@@ -528,18 +528,18 @@ Content-Type: application/json;odata.metadata=minimal;odata.streaming=true;IEEE7
             headers: {
                 "Content-Type": "multipart/mixed; boundary=batchresponse_fb681875-73dc-4e62-9898-a0af89021341"
             },
-            body: '--batchresponse_fb681875-73dc-4e62-9898-a0af89021341\r\n' +
-                  'Content-Type: application/http\r\n' +
-                  'Content-Transfer-Encoding: binary\r\n' +
-                  '\r\n' +
-                  'HTTP/1.1 200 OK\r\n' +
-                  'Cache-Control: no-cache\r\n' +
-                  'OData-Version: 1.0;\r\n' +
-                  'Content-Type: application/json\r\n' +
-                  '\r\n' +
-                  '{ "p1": 500 }\r\n' +
-                  '\r\n' +
-                  '--batchresponse_fb681875-73dc-4e62-9898-a0af89021341--\r\n'
+            body: '--batchresponse_fb681875-73dc-4e62-9898-a0af89021341\n' +
+                  'Content-Type: application/http\n' +
+                  'Content-Transfer-Encoding: binary\n' +
+                  '\n' +
+                  'HTTP/1.1 200 OK\n' +
+                  'Cache-Control: no-cache\n' +
+                  'OData-Version: 1.0;\n' +
+                  'Content-Type: application/json\n' +
+                  '\n' +
+                  '{ "p1": 500 }\n' +
+                  '\n' +
+                  '--batchresponse_fb681875-73dc-4e62-9898-a0af89021341--\n'
         };
 
         var oldPartHandler = window.odatajs.oData.batch.batchHandler.partHandler;

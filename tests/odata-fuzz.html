@@ -32,230 +32,230 @@
     <script type="text/javascript">
 
         var testCsdl = '' +
-        '<?xml version="1.0" encoding="utf-8" standalone="yes"?>\r\n' +
-        '<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx">\r\n' +
-        '  <edmx:DataServices xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" m:DataServiceVersion="2.0">\r\n' +
-        '    <Schema Namespace="TestCatalog.Model" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">\r\n' +
-        '      <EntityType Name="Genre">\r\n' +
-        '        <Key><PropertyRef Name="Name" /></Key>\r\n' +
-        '        <Property Name="Name" Type="Edm.String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" m:FC_TargetPath="SyndicationTitle" />\r\n' +
-        '        <NavigationProperty Name="Titles" Relationship="TestCatalog.Model.TitleGenres" FromRole="Genres" ToRole="Titles" />\r\n' +
-        '      </EntityType>\r\n' +
-        '      <EntityType Name="Language">\r\n' +
-        '        <Key><PropertyRef Name="Name" /></Key>\r\n' +
-        '        <Property Name="Name" Type="Edm.String" Nullable="false" MaxLength="80" Unicode="false" FixedLength="false" m:FC_TargetPath="SyndicationTitle" />\r\n' +
-        '        <NavigationProperty Name="Titles" Relationship="TestCatalog.Model.TitleLanguages" FromRole="Language" ToRole="Titles" />\r\n' +
-        '      </EntityType>\r\n' +
-        '      <EntityType Name="Person">\r\n' +
-        '        <Key><PropertyRef Name="Id" /></Key>\r\n' +
-        '        <Property Name="Id" Type="Edm.Int32" Nullable="false" />\r\n' +
-        '        <Property Name="Name" Type="Edm.String" Nullable="false" MaxLength="80" Unicode="true" FixedLength="false" m:FC_TargetPath="SyndicationTitle" />\r\n' +
-        '        <NavigationProperty Name="Awards" Relationship="TestCatalog.Model.FK_TitleAward_Person" FromRole="People" ToRole="TitleAwards" />\r\n' +
-        '        <NavigationProperty Name="TitlesActedIn" Relationship="TestCatalog.Model.TitleActors" FromRole="People" ToRole="Titles" />\r\n' +
-        '        <NavigationProperty Name="TitlesDirected" Relationship="TestCatalog.Model.TitleDirectors" FromRole="People" ToRole="Titles" />\r\n' +
-        '      </EntityType>\r\n' +
-        '      <EntityType Name="TitleAudioFormat">\r\n' +
-        '        <Key><PropertyRef Name="TitleId" /><PropertyRef Name="DeliveryFormat" /><PropertyRef Name="Language" /><PropertyRef Name="Format" /></Key>\r\n' +
-        '        <Property Name="TitleId" Type="Edm.String" Nullable="false" MaxLength="30" FixedLength="false" />\r\n' +
-        '        <Property Name="DeliveryFormat" Type="Edm.String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />\r\n' +
-        '        <Property Name="Language" Type="Edm.String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />\r\n' +
-        '        <Property Name="Format" Type="Edm.String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />\r\n' +
-        '        <NavigationProperty Name="Title" Relationship="TestCatalog.Model.FK_TitleAudioFormat_Title" FromRole="TitleAudioFormats" ToRole="Titles" />\r\n' +
-        '      </EntityType>\r\n' +
-        '      <EntityType Name="TitleAward">\r\n' +
-        '        <Key><PropertyRef Name="Id" /></Key>\r\n' +
-        '        <Property Name="Id" Type="Edm.Guid" Nullable="false" />\r\n' +
-        '        <Property Name="Type" Type="Edm.String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />\r\n' +
-        '        <Property Name="Category" Type="Edm.String" Nullable="false" MaxLength="60" Unicode="false" FixedLength="false" />\r\n' +
-        '        <Property Name="Year" Type="Edm.Int32" Nullable="true" />\r\n' +
-        '        <Property Name="Won" Type="Edm.Boolean" Nullable="false" />\r\n' +
-        '        <NavigationProperty Name="Title" Relationship="TestCatalog.Model.FK_TitleAward_Title" FromRole="TitleAwards" ToRole="Titles" />\r\n' +
-        '        <NavigationProperty Name="Person" Relationship="TestCatalog.Model.FK_TitleAward_Person" FromRole="TitleAwards" ToRole="People" />\r\n' +
-        '      </EntityType>\r\n' +
-        '      <EntityType Name="Title" m:HasStream="true">\r\n' +
-        '        <Key><PropertyRef Name="Id" /></Key>\r\n' +
-        '        <Property Name="Id" Type="Edm.String" Nullable="false" MaxLength="30" FixedLength="false" />\r\n' +
-        '        <Property Name="Synopsis" Type="Edm.String" Nullable="true" MaxLength="Max" Unicode="false" FixedLength="false" m:FC_TargetPath="SyndicationSummary" m:FC_ContentKind="html" />\r\n' +
-        '        <Property Name="ShortSynopsis" Type="Edm.String" Nullable="true" MaxLength="Max" Unicode="false" FixedLength="false" />\r\n' +
-        '        <Property Name="AverageRating" Type="Edm.Double" Nullable="true" />\r\n' +
-        '        <Property Name="ReleaseYear" Type="Edm.Int32" Nullable="true" />\r\n' +
-        '        <Property Name="Url" Type="Edm.String" Nullable="true" MaxLength="200" Unicode="false" FixedLength="false" />\r\n' +
-        '        <Property Name="Runtime" Type="Edm.Int32" Nullable="true" />\r\n' +
-        '        <Property Name="Rating" Type="Edm.String" Nullable="true" MaxLength="10" Unicode="false" FixedLength="false" />\r\n' +
-        '        <Property Name="DateModified" Type="Edm.DateTime" Nullable="false" ConcurrencyMode="Fixed" m:FC_TargetPath="SyndicationUpdated" m:FC_KeepInContent="false" />\r\n' +
-        '        <Property Name="Type" Type="Edm.String" Nullable="false" MaxLength="8" Unicode="false" FixedLength="false" />\r\n' +
-        '        <Property Name="BoxArt" Type="TestCatalog.Model.BoxArt" Nullable="false" />\r\n' +
-        '        <Property Name="ShortName" Type="Edm.String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />\r\n' +
-        '        <Property Name="Name" Type="Edm.String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" m:FC_TargetPath="SyndicationTitle" />\r\n' +
-        '        <Property Name="Instant" Type="TestCatalog.Model.InstantAvailability" Nullable="false" />\r\n' +
-        '        <Property Name="Dvd" Type="TestCatalog.Model.DeliveryFormatAvailability" Nullable="false" />\r\n' +
-        '        <Property Name="BluRay" Type="TestCatalog.Model.DeliveryFormatAvailability" Nullable="false" />\r\n' +
-        '        <Property Name="TinyUrl" Type="Edm.String" Nullable="false" MaxLength="30" />\r\n' +
-        '        <Property Name="WebsiteUrl" Type="Edm.String" Nullable="true" MaxLength="200" />\r\n' +
-        '        <Property Name="TestApiId" Type="Edm.String" Nullable="false" MaxLength="200" />\r\n' +
-        '        <NavigationProperty Name="AudioFormats" Relationship="TestCatalog.Model.FK_TitleAudioFormat_Title" FromRole="Titles" ToRole="TitleAudioFormats" />\r\n' +
-        '        <NavigationProperty Name="Awards" Relationship="TestCatalog.Model.FK_TitleAward_Title" FromRole="Titles" ToRole="TitleAwards" />\r\n' +
-        '        <NavigationProperty Name="Disc" Relationship="TestCatalog.Model.FK_Title_Disc" FromRole="Titles1" ToRole="Titles" />\r\n' +
-        '        <NavigationProperty Name="Movie" Relationship="TestCatalog.Model.FK_Title_Movie" FromRole="Titles1" ToRole="Titles" />\r\n' +
-        '        <NavigationProperty Name="Season" Relationship="TestCatalog.Model.FK_Title_Season" FromRole="Titles1" ToRole="Titles" />\r\n' +
-        '        <NavigationProperty Name="Series" Relationship="TestCatalog.Model.FK_Title_Series" FromRole="Titles1" ToRole="Titles" />\r\n' +
-        '        <NavigationProperty Name="ScreenFormats" Relationship="TestCatalog.Model.FK_TitleScreenFormat_Title" FromRole="Titles" ToRole="TitleScreenFormats" />\r\n' +
-        '        <NavigationProperty Name="Cast" Relationship="TestCatalog.Model.TitleActors" FromRole="Titles" ToRole="People" />\r\n' +
-        '        <NavigationProperty Name="Languages" Relationship="TestCatalog.Model.TitleLanguages" FromRole="Titles" ToRole="Language" />\r\n' +
-        '        <NavigationProperty Name="Directors" Relationship="TestCatalog.Model.TitleDirectors" FromRole="Titles" ToRole="People" />\r\n' +
-        '        <NavigationProperty Name="Genres" Relationship="TestCatalog.Model.TitleGenres" FromRole="Titles" ToRole="Genres" />\r\n' +
-        '      </EntityType>\r\n' +
-        '      <ComplexType Name="BoxArt">\r\n' +
-        '        <Property Name="SmallUrl" Type="Edm.String" Nullable="true" MaxLength="80" Unicode="false" FixedLength="false" />\r\n' +
-        '        <Property Name="MediumUrl" Type="Edm.String" Nullable="true" MaxLength="80" Unicode="false" FixedLength="false" />\r\n' +
-        '        <Property Name="LargeUrl" Type="Edm.String" Nullable="true" MaxLength="80" Unicode="false" FixedLength="false" />\r\n' +
-        '        <Property Name="HighDefinitionUrl" Type="Edm.String" Nullable="true" MaxLength="80" Unicode="false" FixedLength="false" />\r\n' +
-        '      </ComplexType>\r\n' +
-        '      <ComplexType Name="InstantAvailability">\r\n' +
-        '        <Property Name="Available" Type="Edm.Boolean" Nullable="false" />\r\n' +
-        '        <Property Name="AvailableFrom" Type="Edm.DateTime" Nullable="true" />\r\n' +
-        '        <Property Name="AvailableTo" Type="Edm.DateTime" Nullable="true" />\r\n' +
-        '        <Property Name="HighDefinitionAvailable" Type="Edm.Boolean" Nullable="false" />\r\n' +
-        '        <Property Name="Runtime" Type="Edm.Int32" Nullable="true" />\r\n' +
-        '        <Property Name="Rating" Type="Edm.String" Nullable="true" MaxLength="10" Unicode="false" FixedLength="false" />\r\n' +
-        '      </ComplexType>\r\n' +
-        '      <ComplexType Name="DeliveryFormatAvailability">\r\n' +
-        '        <Property Name="Available" Type="Edm.Boolean" Nullable="false" />\r\n' +
-        '        <Property Name="AvailableFrom" Type="Edm.DateTime" Nullable="true" />\r\n' +
-        '        <Property Name="AvailableTo" Type="Edm.DateTime" Nullable="true" />\r\n' +
-        '        <Property Name="Runtime" Type="Edm.Int32" Nullable="true" />\r\n' +
-        '        <Property Name="Rating" Type="Edm.String" Nullable="true" MaxLength="10" Unicode="false" FixedLength="false" />\r\n' +
-        '      </ComplexType>\r\n' +
-        '      <EntityType Name="TitleScreenFormat">\r\n' +
-        '        <Key><PropertyRef Name="TitleId" /><PropertyRef Name="DeliveryFormat" /><PropertyRef Name="Format" /></Key>\r\n' +
-        '        <Property Name="TitleId" Type="Edm.String" Nullable="false" MaxLength="30" FixedLength="false" />\r\n' +
-        '        <Property Name="DeliveryFormat" Type="Edm.String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />\r\n' +
-        '        <Property Name="Format" Type="Edm.String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />\r\n' +
-        '        <NavigationProperty Name="Title" Relationship="TestCatalog.Model.FK_TitleScreenFormat_Title" FromRole="TitleScreenFormats" ToRole="Titles" />\r\n' +
-        '      </EntityType>\r\n' +
-        '      <Association Name="FK_TitleAudioFormat_Title">\r\n' +
-        '        <End Role="Titles" Type="TestCatalog.Model.Title" Multiplicity="1" />\r\n' +
-        '        <End Role="TitleAudioFormats" Type="TestCatalog.Model.TitleAudioFormat" Multiplicity="*" />\r\n' +
-        '        <ReferentialConstraint>\r\n' +
-        '          <Principal Role="Titles"><PropertyRef Name="Id" /></Principal>\r\n' +
-        '          <Dependent Role="TitleAudioFormats"><PropertyRef Name="TitleId" /></Dependent>\r\n' +
-        '        </ReferentialConstraint>\r\n' +
-        '      </Association>\r\n' +
-        '      <Association Name="FK_TitleAward_Title">\r\n' +
-        '        <End Role="Titles" Type="TestCatalog.Model.Title" Multiplicity="1" />\r\n' +
-        '        <End Role="TitleAwards" Type="TestCatalog.Model.TitleAward" Multiplicity="*" />\r\n' +
-        '      </Association>\r\n' +
-        '      <Association Name="FK_TitleAward_Person">\r\n' +
-        '        <End Role="People" Type="TestCatalog.Model.Person" Multiplicity="0..1" />\r\n' +
-        '        <End Role="TitleAwards" Type="TestCatalog.Model.TitleAward" Multiplicity="*" />\r\n' +
-        '      </Association>\r\n' +
-        '      <Association Name="FK_Title_Disc">\r\n' +
-        '        <End Role="Titles" Type="TestCatalog.Model.Title" Multiplicity="0..1" />\r\n' +
-        '        <End Role="Titles1" Type="TestCatalog.Model.Title" Multiplicity="*" />\r\n' +
-        '      </Association>\r\n' +
-        '      <Association Name="FK_Title_Movie">\r\n' +
-        '        <End Role="Titles" Type="TestCatalog.Model.Title" Multiplicity="0..1" />\r\n' +
-        '        <End Role="Titles1" Type="TestCatalog.Model.Title" Multiplicity="*" />\r\n' +
-        '      </Association>\r\n' +
-        '      <Association Name="FK_Title_Season">\r\n' +
-        '        <End Role="Titles" Type="TestCatalog.Model.Title" Multiplicity="0..1" />\r\n' +
-        '        <End Role="Titles1" Type="TestCatalog.Model.Title" Multiplicity="*" />\r\n' +
-        '      </Association>\r\n' +
-        '      <Association Name="FK_Title_Series">\r\n' +
-        '        <End Role="Titles" Type="TestCatalog.Model.Title" Multiplicity="0..1" />\r\n' +
-        '        <End Role="Titles1" Type="TestCatalog.Model.Title" Multiplicity="*" />\r\n' +
-        '      </Association>\r\n' +
-        '      <Association Name="FK_TitleScreenFormat_Title">\r\n' +
-        '        <End Role="Titles" Type="TestCatalog.Model.Title" Multiplicity="1" />\r\n' +
-        '        <End Role="TitleScreenFormats" Type="TestCatalog.Model.TitleScreenFormat" Multiplicity="*" />\r\n' +
-        '        <ReferentialConstraint>\r\n' +
-        '          <Principal Role="Titles"><PropertyRef Name="Id" /></Principal>\r\n' +
-        '          <Dependent Role="TitleScreenFormats"><PropertyRef Name="TitleId" /></Dependent>\r\n' +
-        '        </ReferentialConstraint>\r\n' +
-        '      </Association>\r\n' +
-        '      <Association Name="TitleActors">\r\n' +
-        '        <End Role="Titles" Type="TestCatalog.Model.Title" Multiplicity="*" />\r\n' +
-        '        <End Role="People" Type="TestCatalog.Model.Person" Multiplicity="*" />\r\n' +
-        '      </Association>\r\n' +
-        '      <Association Name="TitleLanguages">\r\n' +
-        '        <End Role="Titles" Type="TestCatalog.Model.Title" Multiplicity="*" />\r\n' +
-        '        <End Role="Language" Type="TestCatalog.Model.Language" Multiplicity="*" />\r\n' +
-        '      </Association>\r\n' +
-        '      <Association Name="TitleDirectors">\r\n' +
-        '        <End Role="Titles" Type="TestCatalog.Model.Title" Multiplicity="*" />\r\n' +
-        '        <End Role="People" Type="TestCatalog.Model.Person" Multiplicity="*" />\r\n' +
-        '      </Association>\r\n' +
-        '      <Association Name="TitleGenres">\r\n' +
-        '        <End Role="Titles" Type="TestCatalog.Model.Title" Multiplicity="*" />\r\n' +
-        '        <End Role="Genres" Type="TestCatalog.Model.Genre" Multiplicity="*" />\r\n' +
-        '      </Association>\r\n' +
-        '    </Schema>\r\n' +
-        '    <Schema Namespace="Test.Catalog" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">\r\n' +
-        '      <EntityContainer Name="TestCatalog" m:IsDefaultEntityContainer="true">\r\n' +
-        '        <FunctionImport Name="Movies" EntitySet="Titles" ReturnType="Collection(TestCatalog.Model.Title)" m:HttpMethod="GET" />\r\n' +
-        '        <FunctionImport Name="Series" EntitySet="Titles" ReturnType="Collection(TestCatalog.Model.Title)" m:HttpMethod="GET" />\r\n' +
-        '        <FunctionImport Name="Seasons" EntitySet="Titles" ReturnType="Collection(TestCatalog.Model.Title)" m:HttpMethod="GET" />\r\n' +
-        '        <FunctionImport Name="Discs" EntitySet="Titles" ReturnType="Collection(TestCatalog.Model.Title)" m:HttpMethod="GET" />\r\n' +
-        '        <FunctionImport Name="Episodes" EntitySet="Titles" ReturnType="Collection(TestCatalog.Model.Title)" m:HttpMethod="GET" />\r\n' +
-        '        <EntitySet Name="Genres" EntityType="TestCatalog.Model.Genre" />\r\n' +
-        '        <EntitySet Name="Languages" EntityType="TestCatalog.Model.Language" />\r\n' +
-        '        <EntitySet Name="People" EntityType="TestCatalog.Model.Person" />\r\n' +
-        '        <EntitySet Name="TitleAudioFormats" EntityType="TestCatalog.Model.TitleAudioFormat" />\r\n' +
-        '        <EntitySet Name="TitleAwards" EntityType="TestCatalog.Model.TitleAward" />\r\n' +
-        '        <EntitySet Name="Titles" EntityType="TestCatalog.Model.Title" />\r\n' +
-        '        <EntitySet Name="TitleScreenFormats" EntityType="TestCatalog.Model.TitleScreenFormat" />\r\n' +
-        '        <AssociationSet Name="FK_TitleAudioFormat_Title" Association="TestCatalog.Model.FK_TitleAudioFormat_Title">\r\n' +
-        '          <End Role="Titles" EntitySet="Titles" />\r\n' +
-        '          <End Role="TitleAudioFormats" EntitySet="TitleAudioFormats" />\r\n' +
-        '        </AssociationSet>\r\n' +
-        '        <AssociationSet Name="FK_TitleAward_Title" Association="TestCatalog.Model.FK_TitleAward_Title">\r\n' +
-        '          <End Role="Titles" EntitySet="Titles" />\r\n' +
-        '          <End Role="TitleAwards" EntitySet="TitleAwards" />\r\n' +
-        '        </AssociationSet>\r\n' +
-        '        <AssociationSet Name="FK_TitleAward_Person" Association="TestCatalog.Model.FK_TitleAward_Person">\r\n' +
-        '          <End Role="People" EntitySet="People" />\r\n' +
-        '          <End Role="TitleAwards" EntitySet="TitleAwards" />\r\n' +
-        '        </AssociationSet>\r\n' +
-        '        <AssociationSet Name="FK_Title_Disc" Association="TestCatalog.Model.FK_Title_Disc">\r\n' +
-        '          <End Role="Titles" EntitySet="Titles" />\r\n' +
-        '          <End Role="Titles1" EntitySet="Titles" />\r\n' +
-        '        </AssociationSet>\r\n' +
-        '        <AssociationSet Name="FK_Title_Movie" Association="TestCatalog.Model.FK_Title_Movie">\r\n' +
-        '          <End Role="Titles" EntitySet="Titles" />\r\n' +
-        '          <End Role="Titles1" EntitySet="Titles" />\r\n' +
-        '        </AssociationSet>\r\n' +
-        '        <AssociationSet Name="FK_Title_Season" Association="TestCatalog.Model.FK_Title_Season">\r\n' +
-        '          <End Role="Titles" EntitySet="Titles" />\r\n' +
-        '          <End Role="Titles1" EntitySet="Titles" />\r\n' +
-        '        </AssociationSet>\r\n' +
-        '        <AssociationSet Name="FK_Title_Series" Association="TestCatalog.Model.FK_Title_Series">\r\n' +
-        '          <End Role="Titles" EntitySet="Titles" />\r\n' +
-        '          <End Role="Titles1" EntitySet="Titles" />\r\n' +
-        '        </AssociationSet>\r\n' +
-        '        <AssociationSet Name="FK_TitleScreenFormat_Title" Association="TestCatalog.Model.FK_TitleScreenFormat_Title">\r\n' +
-        '          <End Role="Titles" EntitySet="Titles" />\r\n' +
-        '          <End Role="TitleScreenFormats" EntitySet="TitleScreenFormats" />\r\n' +
-        '        </AssociationSet>\r\n' +
-        '        <AssociationSet Name="TitleActors" Association="TestCatalog.Model.TitleActors">\r\n' +
-        '          <End Role="Titles" EntitySet="Titles" />\r\n' +
-        '          <End Role="People" EntitySet="People" />\r\n' +
-        '        </AssociationSet>\r\n' +
-        '        <AssociationSet Name="TitleLanguages" Association="TestCatalog.Model.TitleLanguages">\r\n' +
-        '          <End Role="Titles" EntitySet="Titles" />\r\n' +
-        '          <End Role="Language" EntitySet="Languages" />\r\n' +
-        '        </AssociationSet>\r\n' +
-        '        <AssociationSet Name="TitleDirectors" Association="TestCatalog.Model.TitleDirectors">\r\n' +
-        '          <End Role="Titles" EntitySet="Titles" />\r\n' +
-        '          <End Role="People" EntitySet="People" />\r\n' +
-        '        </AssociationSet>\r\n' +
-        '        <AssociationSet Name="TitleGenres" Association="TestCatalog.Model.TitleGenres">\r\n' +
-        '          <End Role="Titles" EntitySet="Titles" />\r\n' +
-        '          <End Role="Genres" EntitySet="Genres" />\r\n' +
-        '        </AssociationSet>\r\n' +
-        '      </EntityContainer>\r\n' +
-        '    </Schema>\r\n' +
-        '  </edmx:DataServices>\r\n' +
-        '</edmx:Edmx>\r\n' +
+        '<?xml version="1.0" encoding="utf-8" standalone="yes"?>\n' +
+        '<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx">\n' +
+        '  <edmx:DataServices xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" m:DataServiceVersion="2.0">\n' +
+        '    <Schema Namespace="TestCatalog.Model" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">\n' +
+        '      <EntityType Name="Genre">\n' +
+        '        <Key><PropertyRef Name="Name" /></Key>\n' +
+        '        <Property Name="Name" Type="Edm.String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" m:FC_TargetPath="SyndicationTitle" />\n' +
+        '        <NavigationProperty Name="Titles" Relationship="TestCatalog.Model.TitleGenres" FromRole="Genres" ToRole="Titles" />\n' +
+        '      </EntityType>\n' +
+        '      <EntityType Name="Language">\n' +
+        '        <Key><PropertyRef Name="Name" /></Key>\n' +
+        '        <Property Name="Name" Type="Edm.String" Nullable="false" MaxLength="80" Unicode="false" FixedLength="false" m:FC_TargetPath="SyndicationTitle" />\n' +
+        '        <NavigationProperty Name="Titles" Relationship="TestCatalog.Model.TitleLanguages" FromRole="Language" ToRole="Titles" />\n' +
+        '      </EntityType>\n' +
+        '      <EntityType Name="Person">\n' +
+        '        <Key><PropertyRef Name="Id" /></Key>\n' +
+        '        <Property Name="Id" Type="Edm.Int32" Nullable="false" />\n' +
+        '        <Property Name="Name" Type="Edm.String" Nullable="false" MaxLength="80" Unicode="true" FixedLength="false" m:FC_TargetPath="SyndicationTitle" />\n' +
+        '        <NavigationProperty Name="Awards" Relationship="TestCatalog.Model.FK_TitleAward_Person" FromRole="People" ToRole="TitleAwards" />\n' +
+        '        <NavigationProperty Name="TitlesActedIn" Relationship="TestCatalog.Model.TitleActors" FromRole="People" ToRole="Titles" />\n' +
+        '        <NavigationProperty Name="TitlesDirected" Relationship="TestCatalog.Model.TitleDirectors" FromRole="People" ToRole="Titles" />\n' +
+        '      </EntityType>\n' +
+        '      <EntityType Name="TitleAudioFormat">\n' +
+        '        <Key><PropertyRef Name="TitleId" /><PropertyRef Name="DeliveryFormat" /><PropertyRef Name="Language" /><PropertyRef Name="Format" /></Key>\n' +
+        '        <Property Name="TitleId" Type="Edm.String" Nullable="false" MaxLength="30" FixedLength="false" />\n' +
+        '        <Property Name="DeliveryFormat" Type="Edm.String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />\n' +
+        '        <Property Name="Language" Type="Edm.String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />\n' +
+        '        <Property Name="Format" Type="Edm.String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />\n' +
+        '        <NavigationProperty Name="Title" Relationship="TestCatalog.Model.FK_TitleAudioFormat_Title" FromRole="TitleAudioFormats" ToRole="Titles" />\n' +
+        '      </EntityType>\n' +
+        '      <EntityType Name="TitleAward">\n' +
+        '        <Key><PropertyRef Name="Id" /></Key>\n' +
+        '        <Property Name="Id" Type="Edm.Guid" Nullable="false" />\n' +
+        '        <Property Name="Type" Type="Edm.String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />\n' +
+        '        <Property Name="Category" Type="Edm.String" Nullable="false" MaxLength="60" Unicode="false" FixedLength="false" />\n' +
+        '        <Property Name="Year" Type="Edm.Int32" Nullable="true" />\n' +
+        '        <Property Name="Won" Type="Edm.Boolean" Nullable="false" />\n' +
+        '        <NavigationProperty Name="Title" Relationship="TestCatalog.Model.FK_TitleAward_Title" FromRole="TitleAwards" ToRole="Titles" />\n' +
+        '        <NavigationProperty Name="Person" Relationship="TestCatalog.Model.FK_TitleAward_Person" FromRole="TitleAwards" ToRole="People" />\n' +
+        '      </EntityType>\n' +
+        '      <EntityType Name="Title" m:HasStream="true">\n' +
+        '        <Key><PropertyRef Name="Id" /></Key>\n' +
+        '        <Property Name="Id" Type="Edm.String" Nullable="false" MaxLength="30" FixedLength="false" />\n' +
+        '        <Property Name="Synopsis" Type="Edm.String" Nullable="true" MaxLength="Max" Unicode="false" FixedLength="false" m:FC_TargetPath="SyndicationSummary" m:FC_ContentKind="html" />\n' +
+        '        <Property Name="ShortSynopsis" Type="Edm.String" Nullable="true" MaxLength="Max" Unicode="false" FixedLength="false" />\n' +
+        '        <Property Name="AverageRating" Type="Edm.Double" Nullable="true" />\n' +
+        '        <Property Name="ReleaseYear" Type="Edm.Int32" Nullable="true" />\n' +
+        '        <Property Name="Url" Type="Edm.String" Nullable="true" MaxLength="200" Unicode="false" FixedLength="false" />\n' +
+        '        <Property Name="Runtime" Type="Edm.Int32" Nullable="true" />\n' +
+        '        <Property Name="Rating" Type="Edm.String" Nullable="true" MaxLength="10" Unicode="false" FixedLength="false" />\n' +
+        '        <Property Name="DateModified" Type="Edm.DateTime" Nullable="false" ConcurrencyMode="Fixed" m:FC_TargetPath="SyndicationUpdated" m:FC_KeepInContent="false" />\n' +
+        '        <Property Name="Type" Type="Edm.String" Nullable="false" MaxLength="8" Unicode="false" FixedLength="false" />\n' +
+        '        <Property Name="BoxArt" Type="TestCatalog.Model.BoxArt" Nullable="false" />\n' +
+        '        <Property Name="ShortName" Type="Edm.String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />\n' +
+        '        <Property Name="Name" Type="Edm.String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" m:FC_TargetPath="SyndicationTitle" />\n' +
+        '        <Property Name="Instant" Type="TestCatalog.Model.InstantAvailability" Nullable="false" />\n' +
+        '        <Property Name="Dvd" Type="TestCatalog.Model.DeliveryFormatAvailability" Nullable="false" />\n' +
+        '        <Property Name="BluRay" Type="TestCatalog.Model.DeliveryFormatAvailability" Nullable="false" />\n' +
+        '        <Property Name="TinyUrl" Type="Edm.String" Nullable="false" MaxLength="30" />\n' +
+        '        <Property Name="WebsiteUrl" Type="Edm.String" Nullable="true" MaxLength="200" />\n' +
+        '        <Property Name="TestApiId" Type="Edm.String" Nullable="false" MaxLength="200" />\n' +
+        '        <NavigationProperty Name="AudioFormats" Relationship="TestCatalog.Model.FK_TitleAudioFormat_Title" FromRole="Titles" ToRole="TitleAudioFormats" />\n' +
+        '        <NavigationProperty Name="Awards" Relationship="TestCatalog.Model.FK_TitleAward_Title" FromRole="Titles" ToRole="TitleAwards" />\n' +
+        '        <NavigationProperty Name="Disc" Relationship="TestCatalog.Model.FK_Title_Disc" FromRole="Titles1" ToRole="Titles" />\n' +
+        '        <NavigationProperty Name="Movie" Relationship="TestCatalog.Model.FK_Title_Movie" FromRole="Titles1" ToRole="Titles" />\n' +
+        '        <NavigationProperty Name="Season" Relationship="TestCatalog.Model.FK_Title_Season" FromRole="Titles1" ToRole="Titles" />\n' +
+        '        <NavigationProperty Name="Series" Relationship="TestCatalog.Model.FK_Title_Series" FromRole="Titles1" ToRole="Titles" />\n' +
+        '        <NavigationProperty Name="ScreenFormats" Relationship="TestCatalog.Model.FK_TitleScreenFormat_Title" FromRole="Titles" ToRole="TitleScreenFormats" />\n' +
+        '        <NavigationProperty Name="Cast" Relationship="TestCatalog.Model.TitleActors" FromRole="Titles" ToRole="People" />\n' +
+        '        <NavigationProperty Name="Languages" Relationship="TestCatalog.Model.TitleLanguages" FromRole="Titles" ToRole="Language" />\n' +
+        '        <NavigationProperty Name="Directors" Relationship="TestCatalog.Model.TitleDirectors" FromRole="Titles" ToRole="People" />\n' +
+        '        <NavigationProperty Name="Genres" Relationship="TestCatalog.Model.TitleGenres" FromRole="Titles" ToRole="Genres" />\n' +
+        '      </EntityType>\n' +
+        '      <ComplexType Name="BoxArt">\n' +
+        '        <Property Name="SmallUrl" Type="Edm.String" Nullable="true" MaxLength="80" Unicode="false" FixedLength="false" />\n' +
+        '        <Property Name="MediumUrl" Type="Edm.String" Nullable="true" MaxLength="80" Unicode="false" FixedLength="false" />\n' +
+        '        <Property Name="LargeUrl" Type="Edm.String" Nullable="true" MaxLength="80" Unicode="false" FixedLength="false" />\n' +
+        '        <Property Name="HighDefinitionUrl" Type="Edm.String" Nullable="true" MaxLength="80" Unicode="false" FixedLength="false" />\n' +
+        '      </ComplexType>\n' +
+        '      <ComplexType Name="InstantAvailability">\n' +
+        '        <Property Name="Available" Type="Edm.Boolean" Nullable="false" />\n' +
+        '        <Property Name="AvailableFrom" Type="Edm.DateTime" Nullable="true" />\n' +
+        '        <Property Name="AvailableTo" Type="Edm.DateTime" Nullable="true" />\n' +
+        '        <Property Name="HighDefinitionAvailable" Type="Edm.Boolean" Nullable="false" />\n' +
+        '        <Property Name="Runtime" Type="Edm.Int32" Nullable="true" />\n' +
+        '        <Property Name="Rating" Type="Edm.String" Nullable="true" MaxLength="10" Unicode="false" FixedLength="false" />\n' +
+        '      </ComplexType>\n' +
+        '      <ComplexType Name="DeliveryFormatAvailability">\n' +
+        '        <Property Name="Available" Type="Edm.Boolean" Nullable="false" />\n' +
+        '        <Property Name="AvailableFrom" Type="Edm.DateTime" Nullable="true" />\n' +
+        '        <Property Name="AvailableTo" Type="Edm.DateTime" Nullable="true" />\n' +
+        '        <Property Name="Runtime" Type="Edm.Int32" Nullable="true" />\n' +
+        '        <Property Name="Rating" Type="Edm.String" Nullable="true" MaxLength="10" Unicode="false" FixedLength="false" />\n' +
+        '      </ComplexType>\n' +
+        '      <EntityType Name="TitleScreenFormat">\n' +
+        '        <Key><PropertyRef Name="TitleId" /><PropertyRef Name="DeliveryFormat" /><PropertyRef Name="Format" /></Key>\n' +
+        '        <Property Name="TitleId" Type="Edm.String" Nullable="false" MaxLength="30" FixedLength="false" />\n' +
+        '        <Property Name="DeliveryFormat" Type="Edm.String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />\n' +
+        '        <Property Name="Format" Type="Edm.String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />\n' +
+        '        <NavigationProperty Name="Title" Relationship="TestCatalog.Model.FK_TitleScreenFormat_Title" FromRole="TitleScreenFormats" ToRole="Titles" />\n' +
+        '      </EntityType>\n' +
+        '      <Association Name="FK_TitleAudioFormat_Title">\n' +
+        '        <End Role="Titles" Type="TestCatalog.Model.Title" Multiplicity="1" />\n' +
+        '        <End Role="TitleAudioFormats" Type="TestCatalog.Model.TitleAudioFormat" Multiplicity="*" />\n' +
+        '        <ReferentialConstraint>\n' +
+        '          <Principal Role="Titles"><PropertyRef Name="Id" /></Principal>\n' +
+        '          <Dependent Role="TitleAudioFormats"><PropertyRef Name="TitleId" /></Dependent>\n' +
+        '        </ReferentialConstraint>\n' +
+        '      </Association>\n' +
+        '      <Association Name="FK_TitleAward_Title">\n' +
+        '        <End Role="Titles" Type="TestCatalog.Model.Title" Multiplicity="1" />\n' +
+        '        <End Role="TitleAwards" Type="TestCatalog.Model.TitleAward" Multiplicity="*" />\n' +
+        '      </Association>\n' +
+        '      <Association Name="FK_TitleAward_Person">\n' +
+        '        <End Role="People" Type="TestCatalog.Model.Person" Multiplicity="0..1" />\n' +
+        '        <End Role="TitleAwards" Type="TestCatalog.Model.TitleAward" Multiplicity="*" />\n' +
+        '      </Association>\n' +
+        '      <Association Name="FK_Title_Disc">\n' +
+        '        <End Role="Titles" Type="TestCatalog.Model.Title" Multiplicity="0..1" />\n' +
+        '        <End Role="Titles1" Type="TestCatalog.Model.Title" Multiplicity="*" />\n' +
+        '      </Association>\n' +
+        '      <Association Name="FK_Title_Movie">\n' +
+        '        <End Role="Titles" Type="TestCatalog.Model.Title" Multiplicity="0..1" />\n' +
+        '        <End Role="Titles1" Type="TestCatalog.Model.Title" Multiplicity="*" />\n' +
+        '      </Association>\n' +
+        '      <Association Name="FK_Title_Season">\n' +
+        '        <End Role="Titles" Type="TestCatalog.Model.Title" Multiplicity="0..1" />\n' +
+        '        <End Role="Titles1" Type="TestCatalog.Model.Title" Multiplicity="*" />\n' +
+        '      </Association>\n' +
+        '      <Association Name="FK_Title_Series">\n' +
+        '        <End Role="Titles" Type="TestCatalog.Model.Title" Multiplicity="0..1" />\n' +
+        '        <End Role="Titles1" Type="TestCatalog.Model.Title" Multiplicity="*" />\n' +
+        '      </Association>\n' +
+        '      <Association Name="FK_TitleScreenFormat_Title">\n' +
+        '        <End Role="Titles" Type="TestCatalog.Model.Title" Multiplicity="1" />\n' +
+        '        <End Role="TitleScreenFormats" Type="TestCatalog.Model.TitleScreenFormat" Multiplicity="*" />\n' +
+        '        <ReferentialConstraint>\n' +
+        '          <Principal Role="Titles"><PropertyRef Name="Id" /></Principal>\n' +
+        '          <Dependent Role="TitleScreenFormats"><PropertyRef Name="TitleId" /></Dependent>\n' +
+        '        </ReferentialConstraint>\n' +
+        '      </Association>\n' +
+        '      <Association Name="TitleActors">\n' +
+        '        <End Role="Titles" Type="TestCatalog.Model.Title" Multiplicity="*" />\n' +
+        '        <End Role="People" Type="TestCatalog.Model.Person" Multiplicity="*" />\n' +
+        '      </Association>\n' +
+        '      <Association Name="TitleLanguages">\n' +
+        '        <End Role="Titles" Type="TestCatalog.Model.Title" Multiplicity="*" />\n' +
+        '        <End Role="Language" Type="TestCatalog.Model.Language" Multiplicity="*" />\n' +
+        '      </Association>\n' +
+        '      <Association Name="TitleDirectors">\n' +
+        '        <End Role="Titles" Type="TestCatalog.Model.Title" Multiplicity="*" />\n' +
+        '        <End Role="People" Type="TestCatalog.Model.Person" Multiplicity="*" />\n' +
+        '      </Association>\n' +
+        '      <Association Name="TitleGenres">\n' +
+        '        <End Role="Titles" Type="TestCatalog.Model.Title" Multiplicity="*" />\n' +
+        '        <End Role="Genres" Type="TestCatalog.Model.Genre" Multiplicity="*" />\n' +
+        '      </Association>\n' +
+        '    </Schema>\n' +
+        '    <Schema Namespace="Test.Catalog" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">\n' +
+        '      <EntityContainer Name="TestCatalog" m:IsDefaultEntityContainer="true">\n' +
+        '        <FunctionImport Name="Movies" EntitySet="Titles" ReturnType="Collection(TestCatalog.Model.Title)" m:HttpMethod="GET" />\n' +
+        '        <FunctionImport Name="Series" EntitySet="Titles" ReturnType="Collection(TestCatalog.Model.Title)" m:HttpMethod="GET" />\n' +
+        '        <FunctionImport Name="Seasons" EntitySet="Titles" ReturnType="Collection(TestCatalog.Model.Title)" m:HttpMethod="GET" />\n' +
+        '        <FunctionImport Name="Discs" EntitySet="Titles" ReturnType="Collection(TestCatalog.Model.Title)" m:HttpMethod="GET" />\n' +
+        '        <FunctionImport Name="Episodes" EntitySet="Titles" ReturnType="Collection(TestCatalog.Model.Title)" m:HttpMethod="GET" />\n' +
+        '        <EntitySet Name="Genres" EntityType="TestCatalog.Model.Genre" />\n' +
+        '        <EntitySet Name="Languages" EntityType="TestCatalog.Model.Language" />\n' +
+        '        <EntitySet Name="People" EntityType="TestCatalog.Model.Person" />\n' +
+        '        <EntitySet Name="TitleAudioFormats" EntityType="TestCatalog.Model.TitleAudioFormat" />\n' +
+        '        <EntitySet Name="TitleAwards" EntityType="TestCatalog.Model.TitleAward" />\n' +
+        '        <EntitySet Name="Titles" EntityType="TestCatalog.Model.Title" />\n' +
+        '        <EntitySet Name="TitleScreenFormats" EntityType="TestCatalog.Model.TitleScreenFormat" />\n' +
+        '        <AssociationSet Name="FK_TitleAudioFormat_Title" Association="TestCatalog.Model.FK_TitleAudioFormat_Title">\n' +
+        '          <End Role="Titles" EntitySet="Titles" />\n' +
+        '          <End Role="TitleAudioFormats" EntitySet="TitleAudioFormats" />\n' +
+        '        </AssociationSet>\n' +
+        '        <AssociationSet Name="FK_TitleAward_Title" Association="TestCatalog.Model.FK_TitleAward_Title">\n' +
+        '          <End Role="Titles" EntitySet="Titles" />\n' +
+        '          <End Role="TitleAwards" EntitySet="TitleAwards" />\n' +
+        '        </AssociationSet>\n' +
+        '        <AssociationSet Name="FK_TitleAward_Person" Association="TestCatalog.Model.FK_TitleAward_Person">\n' +
+        '          <End Role="People" EntitySet="People" />\n' +
+        '          <End Role="TitleAwards" EntitySet="TitleAwards" />\n' +
+        '        </AssociationSet>\n' +
+        '        <AssociationSet Name="FK_Title_Disc" Association="TestCatalog.Model.FK_Title_Disc">\n' +
+        '          <End Role="Titles" EntitySet="Titles" />\n' +
+        '          <End Role="Titles1" EntitySet="Titles" />\n' +
+        '        </AssociationSet>\n' +
+        '        <AssociationSet Name="FK_Title_Movie" Association="TestCatalog.Model.FK_Title_Movie">\n' +
+        '          <End Role="Titles" EntitySet="Titles" />\n' +
+        '          <End Role="Titles1" EntitySet="Titles" />\n' +
+        '        </AssociationSet>\n' +
+        '        <AssociationSet Name="FK_Title_Season" Association="TestCatalog.Model.FK_Title_Season">\n' +
+        '          <End Role="Titles" EntitySet="Titles" />\n' +
+        '          <End Role="Titles1" EntitySet="Titles" />\n' +
+        '        </AssociationSet>\n' +
+        '        <AssociationSet Name="FK_Title_Series" Association="TestCatalog.Model.FK_Title_Series">\n' +
+        '          <End Role="Titles" EntitySet="Titles" />\n' +
+        '          <End Role="Titles1" EntitySet="Titles" />\n' +
+        '        </AssociationSet>\n' +
+        '        <AssociationSet Name="FK_TitleScreenFormat_Title" Association="TestCatalog.Model.FK_TitleScreenFormat_Title">\n' +
+        '          <End Role="Titles" EntitySet="Titles" />\n' +
+        '          <End Role="TitleScreenFormats" EntitySet="TitleScreenFormats" />\n' +
+        '        </AssociationSet>\n' +
+        '        <AssociationSet Name="TitleActors" Association="TestCatalog.Model.TitleActors">\n' +
+        '          <End Role="Titles" EntitySet="Titles" />\n' +
+        '          <End Role="People" EntitySet="People" />\n' +
+        '        </AssociationSet>\n' +
+        '        <AssociationSet Name="TitleLanguages" Association="TestCatalog.Model.TitleLanguages">\n' +
+        '          <End Role="Titles" EntitySet="Titles" />\n' +
+        '          <End Role="Language" EntitySet="Languages" />\n' +
+        '        </AssociationSet>\n' +
+        '        <AssociationSet Name="TitleDirectors" Association="TestCatalog.Model.TitleDirectors">\n' +
+        '          <End Role="Titles" EntitySet="Titles" />\n' +
+        '          <End Role="People" EntitySet="People" />\n' +
+        '        </AssociationSet>\n' +
+        '        <AssociationSet Name="TitleGenres" Association="TestCatalog.Model.TitleGenres">\n' +
+        '          <End Role="Titles" EntitySet="Titles" />\n' +
+        '          <End Role="Genres" EntitySet="Genres" />\n' +
+        '        </AssociationSet>\n' +
+        '      </EntityContainer>\n' +
+        '    </Schema>\n' +
+        '  </edmx:DataServices>\n' +
+        '</edmx:Edmx>\n' +
         '';
 
 
@@ -373,7 +373,7 @@
         };
 
         var generateServiceDoc = function() {
-            var body = '<?xml version="1.0" encoding="utf-8" standalone="yes" ?>\r\n' +
+            var body = '<?xml version="1.0" encoding="utf-8" standalone="yes" ?>\n' +
                         '<service xml:base="http://services.odata.org/OData/OData.svc/"  xmlns:atom="http://www.w3.org/2005/Atom" ' +
                         ' xmlns:app="http://www.w3.org/2007/app" xmlns="http://www.w3.org/2007/app">' +
                         '<workspace><atom:title>Default</atom:title> <collection href="Products"><atom:title>Products</atom:title></collection>' +
@@ -407,7 +407,7 @@
         var generateXml = function () {
             // TODO: consider doing something about an XHTML section here
             var body = '' +
-                '<?xml version="1.0" encoding="utf-8" standalone="yes"?>\r\n' +
+                '<?xml version="1.0" encoding="utf-8" standalone="yes"?>\n' +
                 '<feed xml:base=http://services.odata.org/OData/OData.svc/' +
                 '     xmlns:d=http://schemas.microsoft.com/ado/2007/08/dataservices' +
                 '     xmlns:m=http://schemas.microsoft.com/ado/2007/08/dataservices/metadata' +

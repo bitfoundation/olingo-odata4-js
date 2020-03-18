@@ -99,10 +99,10 @@
 
     djstest.addTest(function xmlbaseURITest() {
         var xml = "\
-         <root xmlns:n1=\"http://namespace1\" \r\n\
-               xml:base=\"http://base.org\"> \r\n\
-           <element base=\"this is not a xml base attribute\" /> \r\n\
-         </root>\r\n";
+         <root xmlns:n1=\"http://namespace1\" \n\
+               xml:base=\"http://base.org\"> \n\
+           <element base=\"this is not a xml base attribute\" /> \n\
+         </root>\n";
 
         var doc = odatajs.xml.xmlParse(xml);
         var root = odatajs.xml.xmlFirstChildElement(doc);
@@ -115,10 +115,10 @@
 
     djstest.addTest(function xmlAttributeValueTest() {
         var xml = "\
-     <root xmlns:n1=\"http://namespace1\" \r\n\
-           xml:base=\"http://base.org\"> \r\n\
-        <element attribute=\"value\" n1:nsAttribute=\"nsValue\" /> \r\n\
-     </root> \r\n";
+     <root xmlns:n1=\"http://namespace1\" \n\
+           xml:base=\"http://base.org\"> \n\
+        <element attribute=\"value\" n1:nsAttribute=\"nsValue\" /> \n\
+     </root> \n";
 
         var doc = odatajs.xml.xmlParse(xml);
         var root = odatajs.xml.xmlFirstChildElement(doc);
@@ -132,7 +132,7 @@
     });
 
     djstest.addTest(function xmlLocalNameTest() {
-        var xml = "<root xmlns:n1=\"http://namespace1\" /> \r\n";
+        var xml = "<root xmlns:n1=\"http://namespace1\" /> \n";
 
         var doc = odatajs.xml.xmlParse(xml);
         var root = odatajs.xml.xmlFirstChildElement(doc);
@@ -143,11 +143,11 @@
 
     djstest.addTest(function xmlFirstChildElement() {
         var xml = "\
-         <root xmlns:n1=\"http://namespace1\" \r\n\
-               xml:base=\"http://base.org\"> \r\n\
-           <element1 /> \r\n\
-           <element2 /> \r\n\
-         </root>\r\n";
+         <root xmlns:n1=\"http://namespace1\" \n\
+               xml:base=\"http://base.org\"> \n\
+           <element1 /> \n\
+           <element2 /> \n\
+         </root>\n";
 
 
         var doc = odatajs.xml.xmlParse(xml);
@@ -160,12 +160,12 @@
 
     djstest.addTest(function xmlChildElementsTest() {
         var xml = "\
-         <root xmlns:n1=\"http://namespace1\" \r\n\
-               xml:base=\"http://base.org\"> \r\n\
-           <element1 /> \r\n\
-           <element2 xml:base=\"http://otherBase.org\" /> \r\n\
-           <n1:element3 xml:base=\"path1/path2\" /> \r\n\
-         </root>\r\n";
+         <root xmlns:n1=\"http://namespace1\" \n\
+               xml:base=\"http://base.org\"> \n\
+           <element1 /> \n\
+           <element2 xml:base=\"http://otherBase.org\" /> \n\
+           <n1:element3 xml:base=\"path1/path2\" /> \n\
+         </root>\n";
 
         var expected = [
             { localName: "element1", nsURI: null },
@@ -192,10 +192,10 @@
 
     djstest.addTest(function xmlAttributesTest() {
         var xml = "\
-         <root xmlns:n1=\"http://namespace1\" \r\n\
-               xml:base=\"http://base.org\" \r\n\
-               attribute=\"value\" \r\n\
-               n1:nsAttribute=\"nsValue\" />\r\n";
+         <root xmlns:n1=\"http://namespace1\" \n\
+               xml:base=\"http://base.org\" \n\
+               attribute=\"value\" \n\
+               n1:nsAttribute=\"nsValue\" />\n";
 
         var expected = {
             n1: { localName: "n1", nsURI: "http://www.w3.org/2000/xmlns/", value: "http://namespace1" },
@@ -230,12 +230,12 @@
             { t: " ", r: true },
             { t: "text", r: false },
             { t: "text with spaces", r: false },
-            { t: "not \r\n really", r: false },
+            { t: "not \n really", r: false },
             { t: " at start", r: true },
             { t: "at end ", r: true },
             { t: "end\r", r: true },
             { t: "end\n", r: true },
-            { t: "end\r\n", r: true }
+            { t: "end\n", r: true }
         ];
 
         var i, len;

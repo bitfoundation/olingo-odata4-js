@@ -128,7 +128,7 @@
         xhr.setRequestHeader("Content-Type", "application/json");
         xhr.send(window.JSON.stringify(body));
         if (xhr.status < 200 || xhr.status > 299) {
-            throw { message: "Unable to POST to url.\r\n" + xhr.responseText };
+            throw { message: "Unable to POST to url.\n" + xhr.responseText };
         }
 
         return xhr.responseText;

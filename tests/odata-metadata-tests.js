@@ -84,158 +84,158 @@
     });
 
     var testFullCsdl = '' +
-        '<?xml version="1.0" encoding="utf-8"?>\r\n' +
-        '<edmx:Edmx Version="4.0" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">\r\n' +
-        '  <edmx:DataServices xmlns:m="http://docs.oasis-open.org/odata/ns/metadata" m:MaxDataServiceVersion="4.0" m:DataServiceVersion="4.0">\r\n' +
-        '    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="TestCatalog.Model">\r\n' +
-        '      <EntityType Name="Genre">\r\n' +
-        '        <Key><PropertyRef Name="Name" /></Key>\r\n' +
-        '        <Property Name="Name" Type="Edm.String" Nullable="false" MaxLength="50" Unicode="false" />\r\n' +
-        '        <NavigationProperty Name="Titles" Type="Collection(TestCatalog.Model.Title)" Partner="Series" />\r\n' +
-        '      </EntityType>\r\n' +
-        '      <EntityType Name="Language">\r\n' +
-        '        <Key><PropertyRef Name="Name" /></Key>\r\n' +
-        '        <Property Name="Name" Type="Edm.String" Nullable="false" MaxLength="80" Unicode="false" />\r\n' +
-        '        <NavigationProperty Name="Titles" Type="Collection(TestCatalog.Model.Title)" Partner="Languages" />\r\n' +
-        '      </EntityType>\r\n' +
-        '      <EntityType Name="Person">\r\n' +
-        '        <Key><PropertyRef Name="Id" /></Key>\r\n' +
-        '        <Property Name="Id" Type="Edm.Int32" Nullable="false" />\r\n' +
-        '        <Property Name="Name" Type="Edm.String" Nullable="false" MaxLength="80" Unicode="true" />\r\n' +
-        '        <NavigationProperty Name="Awards" Type="Collection(TestCatalog.Model.TitleAward)" Partner="Person"/>\r\n' +
-        '        <NavigationProperty Name="TitlesActedIn" Type="Collection(TestCatalog.Model.Title)" Partner="Cast"/>\r\n' +
-        '        <NavigationProperty Name="TitlesDirected" Type="Collection(TestCatalog.Model.Title)" Partner="Directors"/>\r\n' +
-        '      </EntityType>\r\n' +
-        '      <EntityType Name="TitleAudioFormat">\r\n' +
-        '        <Key><PropertyRef Name="TitleId" /><PropertyRef Name="DeliveryFormat" /><PropertyRef Name="Language" /><PropertyRef Name="Format" /></Key>\r\n' +
-        '        <Property Name="TitleId" Type="Edm.String" Nullable="false" MaxLength="30" FixedLength="false" />\r\n' +
-        '        <Property Name="DeliveryFormat" Type="Edm.String" Nullable="false" MaxLength="10" Unicode="false" />\r\n' +
-        '        <Property Name="Language" Type="Edm.String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />\r\n' +
-        '        <Property Name="Format" Type="Edm.String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />\r\n' +
-        '        <NavigationProperty Name="Title" Type="TestCatalog.Model.Title" Partner="AudioFormats" >\r\n' +
+        '<?xml version="1.0" encoding="utf-8"?>\n' +
+        '<edmx:Edmx Version="4.0" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">\n' +
+        '  <edmx:DataServices xmlns:m="http://docs.oasis-open.org/odata/ns/metadata" m:MaxDataServiceVersion="4.0" m:DataServiceVersion="4.0">\n' +
+        '    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="TestCatalog.Model">\n' +
+        '      <EntityType Name="Genre">\n' +
+        '        <Key><PropertyRef Name="Name" /></Key>\n' +
+        '        <Property Name="Name" Type="Edm.String" Nullable="false" MaxLength="50" Unicode="false" />\n' +
+        '        <NavigationProperty Name="Titles" Type="Collection(TestCatalog.Model.Title)" Partner="Series" />\n' +
+        '      </EntityType>\n' +
+        '      <EntityType Name="Language">\n' +
+        '        <Key><PropertyRef Name="Name" /></Key>\n' +
+        '        <Property Name="Name" Type="Edm.String" Nullable="false" MaxLength="80" Unicode="false" />\n' +
+        '        <NavigationProperty Name="Titles" Type="Collection(TestCatalog.Model.Title)" Partner="Languages" />\n' +
+        '      </EntityType>\n' +
+        '      <EntityType Name="Person">\n' +
+        '        <Key><PropertyRef Name="Id" /></Key>\n' +
+        '        <Property Name="Id" Type="Edm.Int32" Nullable="false" />\n' +
+        '        <Property Name="Name" Type="Edm.String" Nullable="false" MaxLength="80" Unicode="true" />\n' +
+        '        <NavigationProperty Name="Awards" Type="Collection(TestCatalog.Model.TitleAward)" Partner="Person"/>\n' +
+        '        <NavigationProperty Name="TitlesActedIn" Type="Collection(TestCatalog.Model.Title)" Partner="Cast"/>\n' +
+        '        <NavigationProperty Name="TitlesDirected" Type="Collection(TestCatalog.Model.Title)" Partner="Directors"/>\n' +
+        '      </EntityType>\n' +
+        '      <EntityType Name="TitleAudioFormat">\n' +
+        '        <Key><PropertyRef Name="TitleId" /><PropertyRef Name="DeliveryFormat" /><PropertyRef Name="Language" /><PropertyRef Name="Format" /></Key>\n' +
+        '        <Property Name="TitleId" Type="Edm.String" Nullable="false" MaxLength="30" FixedLength="false" />\n' +
+        '        <Property Name="DeliveryFormat" Type="Edm.String" Nullable="false" MaxLength="10" Unicode="false" />\n' +
+        '        <Property Name="Language" Type="Edm.String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />\n' +
+        '        <Property Name="Format" Type="Edm.String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />\n' +
+        '        <NavigationProperty Name="Title" Type="TestCatalog.Model.Title" Partner="AudioFormats" >\n' +
         '            <ReferentialConstraint Property="TitleId" ReferencedProperty="Id" />' +
         '        </NavigationProperty>' +
-        '      </EntityType>\r\n' +
-        '      <EntityType Name="TitleAward">\r\n' +
-        '        <Key><PropertyRef Name="Id" /></Key>\r\n' +
-        '        <Property Name="Id" Type="Edm.Guid" Nullable="false" />\r\n' +
-        '        <Property Name="Type" Type="Edm.String" Nullable="false" MaxLength="30" Unicode="false" />\r\n' +
-        '        <Property Name="Category" Type="Edm.String" Nullable="false" MaxLength="60" Unicode="false" />\r\n' +
-        '        <Property Name="Year" Type="Edm.Int32" Nullable="true" />\r\n' +
-        '        <Property Name="Won" Type="Edm.Boolean" Nullable="false" />\r\n' +
-        '        <NavigationProperty Name="Title" Type="TestCatalog.Model.Title" Partner="Awards"/>\r\n' +
-        '        <NavigationProperty Name="Person" Type="TestCatalog.Model.Person" Partner="Awards"/>\r\n' +
-        '      </EntityType>\r\n' +
-        '      <EntityType Name="Title" HasStream="true">\r\n' +
-        '        <Key><PropertyRef Name="Id" /></Key>\r\n' +
-        '        <Property Name="Id" Type="Edm.String" Nullable="false" MaxLength="30" />\r\n' +
-        '        <Property Name="Synopsis" Type="Edm.String" Nullable="true" MaxLength="Max" Unicode="false" />\r\n' +
-        '        <Property Name="ShortSynopsis" Type="Edm.String" Nullable="true" MaxLength="Max" Unicode="false" />\r\n' +
-        '        <Property Name="AverageRating" Type="Edm.Double" Nullable="true" />\r\n' +
-        '        <Property Name="ReleaseYear" Type="Edm.Int32" Nullable="true" />\r\n' +
-        '        <Property Name="Url" Type="Edm.String" Nullable="true" MaxLength="200" Unicode="false" />\r\n' +
-        '        <Property Name="Runtime" Type="Edm.Int32" Nullable="true" />\r\n' +
-        '        <Property Name="Rating" Type="Edm.String" Nullable="true" MaxLength="10" Unicode="false" />\r\n' +
-        '        <Property Name="DateModified" Type="Edm.DateTime" Nullable="false" />\r\n' +
-        '        <Property Name="Type" Type="Edm.String" Nullable="false" MaxLength="8" Unicode="false" />\r\n' +
-        '        <Property Name="BoxArt" Type="TestCatalog.Model.BoxArt" Nullable="false" />\r\n' +
-        '        <Property Name="ShortName" Type="Edm.String" Nullable="false" MaxLength="200" Unicode="false" />\r\n' +
-        '        <Property Name="Name" Type="Edm.String" Nullable="false" MaxLength="200" Unicode="false" />\r\n' +
-        '        <Property Name="Instant" Type="TestCatalog.Model.InstantAvailability" Nullable="false" />\r\n' +
-        '        <Property Name="Dvd" Type="TestCatalog.Model.DeliveryFormatAvailability" Nullable="false" />\r\n' +
-        '        <Property Name="BluRay" Type="TestCatalog.Model.DeliveryFormatAvailability" Nullable="false" />\r\n' +
-        '        <Property Name="TinyUrl" Type="Edm.String" Nullable="false" />\r\n' +
-        '        <Property Name="WebsiteUrl" Type="Edm.String" Nullable="true" />\r\n' +
-        '        <Property Name="TestApiId" Type="Edm.String" Nullable="false" />\r\n' +
-        '        <NavigationProperty Name="AudioFormats" Type="Collection(TestCatalog.Model.TitleAudioFormat)" Partner="Title" Nullable="false" />\r\n' +
-        '        <NavigationProperty Name="Awards" Type="Collection(TestCatalog.Model.TitleAward)" Partner="Title" Nullable="false" />\r\n' +
-        '        <NavigationProperty Name="Disc" Type="Collection(TestCatalog.Model.Title)" />\r\n' +
-        '        <NavigationProperty Name="Movie" Type="Collection(TestCatalog.Model.Title)" />\r\n' +
-        '        <NavigationProperty Name="Season" Type="Collection(TestCatalog.Model.Title)" />\r\n' +
-        '        <NavigationProperty Name="Series" Type="Collection(TestCatalog.Model.Title)" />\r\n' +
-        '        <NavigationProperty Name="ScreenFormats" Type="Collection(TestCatalog.Model.TitleScreenFormat)" Partner="Title" Nullable="false" />\r\n' +
-        '        <NavigationProperty Name="Cast" Type="Collection(TestCatalog.Model.Person)" Partner="TitlesActedIn" Nullable="false" />\r\n' +
-        '        <NavigationProperty Name="Languages" Type="Collection(TestCatalog.Model.Language)" Partner="Titles" Nullable="false" />\r\n' +
-        '        <NavigationProperty Name="Directors" Type="Collection(TestCatalog.Model.Person)" Partner="TitlesDirected" Nullable="false" />\r\n' +
-        '        <NavigationProperty Name="Genres" Type="Collection(TestCatalog.Model.Genre)" Partner="Titles" Nullable="false" />\r\n' +
-        '      </EntityType>\r\n' +
-        '      <ComplexType Name="BoxArt">\r\n' +
-        '        <Property Name="SmallUrl" Type="Edm.String" Nullable="true" MaxLength="80" Unicode="false" />\r\n' +
-        '        <Property Name="MediumUrl" Type="Edm.String" Nullable="true" MaxLength="80" Unicode="false" />\r\n' +
-        '        <Property Name="LargeUrl" Type="Edm.String" Nullable="true" MaxLength="80" Unicode="false" />\r\n' +
-        '        <Property Name="HighDefinitionUrl" Type="Edm.String" Nullable="true" MaxLength="80" Unicode="false" />\r\n' +
-        '      </ComplexType>\r\n' +
-        '      <ComplexType Name="InstantAvailability">\r\n' +
-        '        <Property Name="Available" Type="Edm.Boolean" Nullable="false" />\r\n' +
-        '        <Property Name="AvailableFrom" Type="Edm.DateTime" Nullable="true" />\r\n' +
-        '        <Property Name="AvailableTo" Type="Edm.DateTime" Nullable="true" />\r\n' +
-        '        <Property Name="HighDefinitionAvailable" Type="Edm.Boolean" Nullable="false" />\r\n' +
-        '        <Property Name="Runtime" Type="Edm.Int32" Nullable="true" />\r\n' +
-        '        <Property Name="Rating" Type="Edm.String" Nullable="true" MaxLength="10" Unicode="false" />\r\n' +
-        '      </ComplexType>\r\n' +
-        '      <ComplexType Name="DeliveryFormatAvailability">\r\n' +
-        '        <Property Name="Available" Type="Edm.Boolean" Nullable="false" />\r\n' +
-        '        <Property Name="AvailableFrom" Type="Edm.DateTime" Nullable="true" />\r\n' +
-        '        <Property Name="AvailableTo" Type="Edm.DateTime" Nullable="true" />\r\n' +
-        '        <Property Name="Runtime" Type="Edm.Int32" Nullable="true" />\r\n' +
-        '        <Property Name="Rating" Type="Edm.String" Nullable="true" MaxLength="10" Unicode="false" />\r\n' +
-        '      </ComplexType>\r\n' +
-        '      <EntityType Name="TitleScreenFormat">\r\n' +
-        '        <Key><PropertyRef Name="TitleId" /><PropertyRef Name="DeliveryFormat" /><PropertyRef Name="Format" /></Key>\r\n' +
-        '        <Property Name="TitleId" Type="Edm.String" Nullable="false" MaxLength="30" />\r\n' +
-        '        <Property Name="DeliveryFormat" Type="Edm.String" Nullable="false" MaxLength="10" Unicode="false" />\r\n' +
-        '        <Property Name="Format" Type="Edm.String" Nullable="false" MaxLength="30" Unicode="false" />\r\n' +
-        '        <NavigationProperty Name="Title" Type="TestCatalog.Model.Title" Partner="ScreenFormats" >\r\n' +
+        '      </EntityType>\n' +
+        '      <EntityType Name="TitleAward">\n' +
+        '        <Key><PropertyRef Name="Id" /></Key>\n' +
+        '        <Property Name="Id" Type="Edm.Guid" Nullable="false" />\n' +
+        '        <Property Name="Type" Type="Edm.String" Nullable="false" MaxLength="30" Unicode="false" />\n' +
+        '        <Property Name="Category" Type="Edm.String" Nullable="false" MaxLength="60" Unicode="false" />\n' +
+        '        <Property Name="Year" Type="Edm.Int32" Nullable="true" />\n' +
+        '        <Property Name="Won" Type="Edm.Boolean" Nullable="false" />\n' +
+        '        <NavigationProperty Name="Title" Type="TestCatalog.Model.Title" Partner="Awards"/>\n' +
+        '        <NavigationProperty Name="Person" Type="TestCatalog.Model.Person" Partner="Awards"/>\n' +
+        '      </EntityType>\n' +
+        '      <EntityType Name="Title" HasStream="true">\n' +
+        '        <Key><PropertyRef Name="Id" /></Key>\n' +
+        '        <Property Name="Id" Type="Edm.String" Nullable="false" MaxLength="30" />\n' +
+        '        <Property Name="Synopsis" Type="Edm.String" Nullable="true" MaxLength="Max" Unicode="false" />\n' +
+        '        <Property Name="ShortSynopsis" Type="Edm.String" Nullable="true" MaxLength="Max" Unicode="false" />\n' +
+        '        <Property Name="AverageRating" Type="Edm.Double" Nullable="true" />\n' +
+        '        <Property Name="ReleaseYear" Type="Edm.Int32" Nullable="true" />\n' +
+        '        <Property Name="Url" Type="Edm.String" Nullable="true" MaxLength="200" Unicode="false" />\n' +
+        '        <Property Name="Runtime" Type="Edm.Int32" Nullable="true" />\n' +
+        '        <Property Name="Rating" Type="Edm.String" Nullable="true" MaxLength="10" Unicode="false" />\n' +
+        '        <Property Name="DateModified" Type="Edm.DateTime" Nullable="false" />\n' +
+        '        <Property Name="Type" Type="Edm.String" Nullable="false" MaxLength="8" Unicode="false" />\n' +
+        '        <Property Name="BoxArt" Type="TestCatalog.Model.BoxArt" Nullable="false" />\n' +
+        '        <Property Name="ShortName" Type="Edm.String" Nullable="false" MaxLength="200" Unicode="false" />\n' +
+        '        <Property Name="Name" Type="Edm.String" Nullable="false" MaxLength="200" Unicode="false" />\n' +
+        '        <Property Name="Instant" Type="TestCatalog.Model.InstantAvailability" Nullable="false" />\n' +
+        '        <Property Name="Dvd" Type="TestCatalog.Model.DeliveryFormatAvailability" Nullable="false" />\n' +
+        '        <Property Name="BluRay" Type="TestCatalog.Model.DeliveryFormatAvailability" Nullable="false" />\n' +
+        '        <Property Name="TinyUrl" Type="Edm.String" Nullable="false" />\n' +
+        '        <Property Name="WebsiteUrl" Type="Edm.String" Nullable="true" />\n' +
+        '        <Property Name="TestApiId" Type="Edm.String" Nullable="false" />\n' +
+        '        <NavigationProperty Name="AudioFormats" Type="Collection(TestCatalog.Model.TitleAudioFormat)" Partner="Title" Nullable="false" />\n' +
+        '        <NavigationProperty Name="Awards" Type="Collection(TestCatalog.Model.TitleAward)" Partner="Title" Nullable="false" />\n' +
+        '        <NavigationProperty Name="Disc" Type="Collection(TestCatalog.Model.Title)" />\n' +
+        '        <NavigationProperty Name="Movie" Type="Collection(TestCatalog.Model.Title)" />\n' +
+        '        <NavigationProperty Name="Season" Type="Collection(TestCatalog.Model.Title)" />\n' +
+        '        <NavigationProperty Name="Series" Type="Collection(TestCatalog.Model.Title)" />\n' +
+        '        <NavigationProperty Name="ScreenFormats" Type="Collection(TestCatalog.Model.TitleScreenFormat)" Partner="Title" Nullable="false" />\n' +
+        '        <NavigationProperty Name="Cast" Type="Collection(TestCatalog.Model.Person)" Partner="TitlesActedIn" Nullable="false" />\n' +
+        '        <NavigationProperty Name="Languages" Type="Collection(TestCatalog.Model.Language)" Partner="Titles" Nullable="false" />\n' +
+        '        <NavigationProperty Name="Directors" Type="Collection(TestCatalog.Model.Person)" Partner="TitlesDirected" Nullable="false" />\n' +
+        '        <NavigationProperty Name="Genres" Type="Collection(TestCatalog.Model.Genre)" Partner="Titles" Nullable="false" />\n' +
+        '      </EntityType>\n' +
+        '      <ComplexType Name="BoxArt">\n' +
+        '        <Property Name="SmallUrl" Type="Edm.String" Nullable="true" MaxLength="80" Unicode="false" />\n' +
+        '        <Property Name="MediumUrl" Type="Edm.String" Nullable="true" MaxLength="80" Unicode="false" />\n' +
+        '        <Property Name="LargeUrl" Type="Edm.String" Nullable="true" MaxLength="80" Unicode="false" />\n' +
+        '        <Property Name="HighDefinitionUrl" Type="Edm.String" Nullable="true" MaxLength="80" Unicode="false" />\n' +
+        '      </ComplexType>\n' +
+        '      <ComplexType Name="InstantAvailability">\n' +
+        '        <Property Name="Available" Type="Edm.Boolean" Nullable="false" />\n' +
+        '        <Property Name="AvailableFrom" Type="Edm.DateTime" Nullable="true" />\n' +
+        '        <Property Name="AvailableTo" Type="Edm.DateTime" Nullable="true" />\n' +
+        '        <Property Name="HighDefinitionAvailable" Type="Edm.Boolean" Nullable="false" />\n' +
+        '        <Property Name="Runtime" Type="Edm.Int32" Nullable="true" />\n' +
+        '        <Property Name="Rating" Type="Edm.String" Nullable="true" MaxLength="10" Unicode="false" />\n' +
+        '      </ComplexType>\n' +
+        '      <ComplexType Name="DeliveryFormatAvailability">\n' +
+        '        <Property Name="Available" Type="Edm.Boolean" Nullable="false" />\n' +
+        '        <Property Name="AvailableFrom" Type="Edm.DateTime" Nullable="true" />\n' +
+        '        <Property Name="AvailableTo" Type="Edm.DateTime" Nullable="true" />\n' +
+        '        <Property Name="Runtime" Type="Edm.Int32" Nullable="true" />\n' +
+        '        <Property Name="Rating" Type="Edm.String" Nullable="true" MaxLength="10" Unicode="false" />\n' +
+        '      </ComplexType>\n' +
+        '      <EntityType Name="TitleScreenFormat">\n' +
+        '        <Key><PropertyRef Name="TitleId" /><PropertyRef Name="DeliveryFormat" /><PropertyRef Name="Format" /></Key>\n' +
+        '        <Property Name="TitleId" Type="Edm.String" Nullable="false" MaxLength="30" />\n' +
+        '        <Property Name="DeliveryFormat" Type="Edm.String" Nullable="false" MaxLength="10" Unicode="false" />\n' +
+        '        <Property Name="Format" Type="Edm.String" Nullable="false" MaxLength="30" Unicode="false" />\n' +
+        '        <NavigationProperty Name="Title" Type="TestCatalog.Model.Title" Partner="ScreenFormats" >\n' +
         '            <ReferentialConstraint Property="TitleId" ReferencedProperty="Id" />' +
         '        </NavigationProperty>' +
-        '      </EntityType>\r\n' +
+        '      </EntityType>\n' +
         '      <Function Name="ProductsByRating">' +
-        '        <ReturnType Type="Collection(TestCatalog.Model.Title)" />\r\n' +
-        '      </Function>\r\n' +
-        '    </Schema>\r\n' +
-        '    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Test.Catalog">\r\n' +
-        '      <EntityContainer Name="TestCatalog" >\r\n' +
-        '        <FunctionImport Name="Movies" EntitySet="Titles" Function="estCatalog.Model.GetTitles" />\r\n' +
-        '        <FunctionImport Name="Series" EntitySet="Titles" Function="estCatalog.Model.GetTitles" />\r\n' +
-        '        <FunctionImport Name="Seasons" EntitySet="Titles" Function="estCatalog.Model.GetTitles" />\r\n' +
-        '        <FunctionImport Name="Discs" EntitySet="Titles" Function="estCatalog.Model.GetTitles" />\r\n' +
-        '        <FunctionImport Name="Episodes" EntitySet="Titles" Function="estCatalog.Model.GetTitles" />\r\n' +
-        '        <EntitySet Name="Genres" EntityType="TestCatalog.Model.Genre" >\r\n' +
-        '            <NavigationPropertyBinding Target="Titles" Path="Titles" />\r\n' +
-        '        </EntitySet>\r\n' +
-        '        <EntitySet Name="Languages" EntityType="TestCatalog.Model.Language" >\r\n' +
-        '            <NavigationPropertyBinding Target="Titles" Path="Languages" />\r\n' +
-        '        </EntitySet>\r\n' +
-        '        <EntitySet Name="People" EntityType="TestCatalog.Model.Person" >\r\n' +
-        '            <NavigationPropertyBinding Target="Titles" Path="Cast" />\r\n' +
-        '            <NavigationPropertyBinding Target="Titles" Path="Directors" />\r\n' +
+        '        <ReturnType Type="Collection(TestCatalog.Model.Title)" />\n' +
+        '      </Function>\n' +
+        '    </Schema>\n' +
+        '    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Test.Catalog">\n' +
+        '      <EntityContainer Name="TestCatalog" >\n' +
+        '        <FunctionImport Name="Movies" EntitySet="Titles" Function="estCatalog.Model.GetTitles" />\n' +
+        '        <FunctionImport Name="Series" EntitySet="Titles" Function="estCatalog.Model.GetTitles" />\n' +
+        '        <FunctionImport Name="Seasons" EntitySet="Titles" Function="estCatalog.Model.GetTitles" />\n' +
+        '        <FunctionImport Name="Discs" EntitySet="Titles" Function="estCatalog.Model.GetTitles" />\n' +
+        '        <FunctionImport Name="Episodes" EntitySet="Titles" Function="estCatalog.Model.GetTitles" />\n' +
+        '        <EntitySet Name="Genres" EntityType="TestCatalog.Model.Genre" >\n' +
+        '            <NavigationPropertyBinding Target="Titles" Path="Titles" />\n' +
+        '        </EntitySet>\n' +
+        '        <EntitySet Name="Languages" EntityType="TestCatalog.Model.Language" >\n' +
+        '            <NavigationPropertyBinding Target="Titles" Path="Languages" />\n' +
+        '        </EntitySet>\n' +
+        '        <EntitySet Name="People" EntityType="TestCatalog.Model.Person" >\n' +
+        '            <NavigationPropertyBinding Target="Titles" Path="Cast" />\n' +
+        '            <NavigationPropertyBinding Target="Titles" Path="Directors" />\n' +
         '        </EntitySet>' +
-        '        <EntitySet Name="TitleAudioFormats" EntityType="TestCatalog.Model.TitleAudioFormat" >\r\n' +
-        '            <NavigationPropertyBinding Target="Titles" Path="AudioFormats" />\r\n' +
-        '        </EntitySet>\r\n' +
-        '        <EntitySet Name="TitleAwards" EntityType="TestCatalog.Model.TitleAward" >\r\n' +
-        '            <NavigationPropertyBinding Target="Titles" Path="Awards" />\r\n' +
-        '        </EntitySet>\r\n' +
-        '        <EntitySet Name="Titles" EntityType="TestCatalog.Model.Title" >\r\n' +
-        '            <NavigationPropertyBinding Target="TitleAudioFormats" Path="Title" />\r\n' +
-        '            <NavigationPropertyBinding Target="TitleAwards" Path="Title" />\r\n' +
-        '            <NavigationPropertyBinding Target="Titles" Path="Disc" />\r\n' +
-        '            <NavigationPropertyBinding Target="Titles" Path="Movie" />\r\n' +
-        '            <NavigationPropertyBinding Target="Titles" Path="Season" />\r\n' +
-        '            <NavigationPropertyBinding Target="Titles" Path="Series" />\r\n' +
-        '            <NavigationPropertyBinding Target="TitleScreenFormats" Path="ScreenFormats" />\r\n' +
-        '            <NavigationPropertyBinding Target="People" Path="TitlesActedIn" />\r\n' +
-        '            <NavigationPropertyBinding Target="Languages" Path="Titles" />\r\n' +
-        '            <NavigationPropertyBinding Target="People" Path="TitlesDirected" />\r\n' +
-        '            <NavigationPropertyBinding Target="Genres" Path="Genres" />\r\n' +
-        '        </EntitySet>\r\n' +
-        '        <EntitySet Name="TitleScreenFormats" EntityType="TestCatalog.Model.TitleScreenFormat" >\r\n' +
-        '            <NavigationPropertyBinding Target="TitleScreenFormats" Path="Title" />\r\n' +
-        '        </EntitySet>\r\n' +
-        '      </EntityContainer>\r\n' +
-        '    </Schema>\r\n' +
-        '  </edmx:DataServices>\r\n' +
-        '</edmx:Edmx>\r\n' +
+        '        <EntitySet Name="TitleAudioFormats" EntityType="TestCatalog.Model.TitleAudioFormat" >\n' +
+        '            <NavigationPropertyBinding Target="Titles" Path="AudioFormats" />\n' +
+        '        </EntitySet>\n' +
+        '        <EntitySet Name="TitleAwards" EntityType="TestCatalog.Model.TitleAward" >\n' +
+        '            <NavigationPropertyBinding Target="Titles" Path="Awards" />\n' +
+        '        </EntitySet>\n' +
+        '        <EntitySet Name="Titles" EntityType="TestCatalog.Model.Title" >\n' +
+        '            <NavigationPropertyBinding Target="TitleAudioFormats" Path="Title" />\n' +
+        '            <NavigationPropertyBinding Target="TitleAwards" Path="Title" />\n' +
+        '            <NavigationPropertyBinding Target="Titles" Path="Disc" />\n' +
+        '            <NavigationPropertyBinding Target="Titles" Path="Movie" />\n' +
+        '            <NavigationPropertyBinding Target="Titles" Path="Season" />\n' +
+        '            <NavigationPropertyBinding Target="Titles" Path="Series" />\n' +
+        '            <NavigationPropertyBinding Target="TitleScreenFormats" Path="ScreenFormats" />\n' +
+        '            <NavigationPropertyBinding Target="People" Path="TitlesActedIn" />\n' +
+        '            <NavigationPropertyBinding Target="Languages" Path="Titles" />\n' +
+        '            <NavigationPropertyBinding Target="People" Path="TitlesDirected" />\n' +
+        '            <NavigationPropertyBinding Target="Genres" Path="Genres" />\n' +
+        '        </EntitySet>\n' +
+        '        <EntitySet Name="TitleScreenFormats" EntityType="TestCatalog.Model.TitleScreenFormat" >\n' +
+        '            <NavigationPropertyBinding Target="TitleScreenFormats" Path="Title" />\n' +
+        '        </EntitySet>\n' +
+        '      </EntityContainer>\n' +
+        '    </Schema>\n' +
+        '  </edmx:DataServices>\n' +
+        '</edmx:Edmx>\n' +
         '';
 
     var testFullMetadataResult = {
@@ -395,10 +395,10 @@
     };
 
     var testCsdlV4 = '' +
-    '<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">\r\n' +
-    '  <edmx:DataServices xmlns:m="http://docs.oasis-open.org/odata/ns/metadata" m:MaxDataServiceVersion="4.0" m:DataServiceVersion="4.0">\r\n' +
-    '    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="TestCatalog.Model"/>\r\n' +
-    '  </edmx:DataServices>\r\n' +
+    '<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">\n' +
+    '  <edmx:DataServices xmlns:m="http://docs.oasis-open.org/odata/ns/metadata" m:MaxDataServiceVersion="4.0" m:DataServiceVersion="4.0">\n' +
+    '    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="TestCatalog.Model"/>\n' +
+    '  </edmx:DataServices>\n' +
     '</edmx:Edmx>';
 
     var testMetadataV4 = {
@@ -434,15 +434,15 @@
 
     djstest.addTest(function metadataVocabularyTest() {
         var testCsdl = '' +
-        '<?xml version="1.0" encoding="utf-8" standalone="yes"?>\r\n' +
-        '<edmx:Edmx Version="4.0" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" >\r\n' +
-        '  <edmx:DataServices xmlns:m="http://docs.oasis-open.org/odata/ns/metadata" m:MaxDataServiceVersion="4.0" m:DataServiceVersion="4.0">\r\n' +
-        '    <Schema Namespace="TestCatalog.Model" xmlns="http://docs.oasis-open.org/odata/ns/edm">\r\n' +
-        '          <Term Name="Rating" Type="Edm.Int32" />\r\n' +
-        '          <Term Name="CanEdit" Type="Edm.String" />\r\n' +
-        '      <EntityType Name="Genre">\r\n' +
-        '        <Key><PropertyRef Name="Name" /></Key>\r\n' +
-        '        <Property Name="Name" Type="Edm.String" Nullable="false" MaxLength="50" Unicode="false" />\r\n' +
+        '<?xml version="1.0" encoding="utf-8" standalone="yes"?>\n' +
+        '<edmx:Edmx Version="4.0" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" >\n' +
+        '  <edmx:DataServices xmlns:m="http://docs.oasis-open.org/odata/ns/metadata" m:MaxDataServiceVersion="4.0" m:DataServiceVersion="4.0">\n' +
+        '    <Schema Namespace="TestCatalog.Model" xmlns="http://docs.oasis-open.org/odata/ns/edm">\n' +
+        '          <Term Name="Rating" Type="Edm.Int32" />\n' +
+        '          <Term Name="CanEdit" Type="Edm.String" />\n' +
+        '      <EntityType Name="Genre">\n' +
+        '        <Key><PropertyRef Name="Name" /></Key>\n' +
+        '        <Property Name="Name" Type="Edm.String" Nullable="false" MaxLength="50" Unicode="false" />\n' +
         '      </EntityType></Schema></edmx:DataServices></edmx:Edmx>';
 
 
@@ -457,26 +457,26 @@
 
     djstest.addTest(function metadataAnnotationTest() {
         var testCsdl = '' +
-        '<?xml version="1.0" encoding="utf-8" standalone="yes"?>\r\n' +
-        '<edmx:Edmx Version="4.0" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" >\r\n' +
-        '  <edmx:DataServices xmlns:m="http://docs.oasis-open.org/odata/ns/metadata" m:MaxDataServiceVersion="4.0" m:DataServiceVersion="4.0">\r\n' +
-        '    <Schema Namespace="TestCatalog.Model" xmlns="http://docs.oasis-open.org/odata/ns/edm">\r\n' +
-        '      <EntityType Name="Genre">\r\n' +
-        '        <Key><PropertyRef Name="Name" /></Key>\r\n' +
-        '        <Property Name="Name" Type="Edm.String" Nullable="false" MaxLength="50" Unicode="false" />\r\n' +
-        '      </EntityType>\r\n' +
-        '      <EntityType Name="Language">\r\n' +
-        '        <Key><PropertyRef Name="Name" /></Key>\r\n' +
-        '        <Property Name="Name" Type="Edm.String" Nullable="false" MaxLength="80" Unicode="false" />\r\n' +
-        '        <Property Name="Id" Type="Edm.Int32" />\r\n' +
-        '      </EntityType>\r\n' +
-        '      <Annotations Target="TestCatalog.Model.Genre/Name">\r\n' +
-        '        <Annotation String="Genre Name" Term="Org.OData.Display.V1.DisplayName"/>\r\n' +
-        '      </Annotations>\r\n' +
-        '      <Annotations Target="TestCatalog.Model.Language/Name">\r\n' +
-        '        <Annotation String="Language Name" Term="Org.OData.Display.V1.DisplayName"/>\r\n' +
-        '        <Annotation String="Language Name 2" Term="Org.OData.Display.V1.DisplayName 2"/>\r\n' +
-        '      </Annotations>\r\n' +
+        '<?xml version="1.0" encoding="utf-8" standalone="yes"?>\n' +
+        '<edmx:Edmx Version="4.0" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" >\n' +
+        '  <edmx:DataServices xmlns:m="http://docs.oasis-open.org/odata/ns/metadata" m:MaxDataServiceVersion="4.0" m:DataServiceVersion="4.0">\n' +
+        '    <Schema Namespace="TestCatalog.Model" xmlns="http://docs.oasis-open.org/odata/ns/edm">\n' +
+        '      <EntityType Name="Genre">\n' +
+        '        <Key><PropertyRef Name="Name" /></Key>\n' +
+        '        <Property Name="Name" Type="Edm.String" Nullable="false" MaxLength="50" Unicode="false" />\n' +
+        '      </EntityType>\n' +
+        '      <EntityType Name="Language">\n' +
+        '        <Key><PropertyRef Name="Name" /></Key>\n' +
+        '        <Property Name="Name" Type="Edm.String" Nullable="false" MaxLength="80" Unicode="false" />\n' +
+        '        <Property Name="Id" Type="Edm.Int32" />\n' +
+        '      </EntityType>\n' +
+        '      <Annotations Target="TestCatalog.Model.Genre/Name">\n' +
+        '        <Annotation String="Genre Name" Term="Org.OData.Display.V1.DisplayName"/>\n' +
+        '      </Annotations>\n' +
+        '      <Annotations Target="TestCatalog.Model.Language/Name">\n' +
+        '        <Annotation String="Language Name" Term="Org.OData.Display.V1.DisplayName"/>\n' +
+        '        <Annotation String="Language Name 2" Term="Org.OData.Display.V1.DisplayName 2"/>\n' +
+        '      </Annotations>\n' +
         '    </Schema></edmx:DataServices></edmx:Edmx>';
 
 
